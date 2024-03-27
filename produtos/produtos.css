@@ -1,11 +1,15 @@
+/* fonte */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
+/* cores */
 :root{
     --azulclaro: #0b99db;
     --azulescuro: #041521;
     --branco: #f6f6f6;
+    --azulbotao: #00008B;
 }
 
+/**/
 *{
     margin: 0;
     padding: 0;
@@ -24,6 +28,10 @@ html{
     overflow-x: hidden;
 }
 
+
+
+/* cabeçalho */
+
 header{
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -37,7 +45,7 @@ header{
 }
 
 header .logo{
-    height: 50px;
+    height: 8rem;
 }
 
 header a{
@@ -45,7 +53,7 @@ header a{
 }
   
 header .navbar a{
-    font-size: 2rem;
+    font-size: 25px;
     padding: 0 1.5rem;
     color: var(--azulescuro);
 }
@@ -54,5 +62,111 @@ header .navbar a:hover{
     color: var(--azulclaro);
 }
 
+.produtos {
+    padding-top: 200px; 
+    margin-bottom: 20rem;
+}
 
 
+.produtos .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8rem;
+    margin-left: 30rem;
+    
+}
+
+.produtos .box-container .box .categoria{
+    text-align: center; 
+    color: #00008B;
+}
+
+
+.produtos .box-container .box {
+    padding: 30px;
+    flex: 0 0 calc(25% - 1rem); /* Ajusta a largura dos boxes */
+    max-width: calc(25% - 1rem); /* Ajusta a largura máxima dos boxes */
+    background-color: var(--branco);
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    position: relative;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    
+}
+
+
+.produtos .box-container .box:hover{
+    transform: scale(1.1);
+}
+
+.produtos .box-container .box .imagem{
+    position: relative;
+    text-align: center;
+    padding-top: 2rem;
+    overflow: hidden;
+}
+
+.produtos .box-container .box .imagem img{
+    height: 25rem;
+}
+
+
+
+.botao{
+    background-color: #00008B;
+    width: 20rem;
+    height: 5rem;
+    border: none;
+    font-family: 'Sarala', sans-serif;
+    font-size: 15px;
+    color: white;
+    border-radius: 20px;
+    margin-top: 2rem;
+}
+
+.botao:hover{
+    background-color:var(--azulclaro);
+}
+
+
+
+/* estilização rodapé*/
+.rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Ajuste para iniciar o alinhamento vertical */
+    background-color: #1F2120;
+    margin: 0;
+    padding: 12rem;
+}
+
+.titulo-rodape {
+    font-family: "Orbitron", sans-serif;
+    font-size: 38px;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.logo-rodape {
+    height: 27rem;
+}
+
+.redes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.redes-sociais {
+    height: 2.25rem;
+    margin-right: 8px;
+}
+
+.texto-redes-sociais {
+    color: white;
+    font-size: 25px;
+}
+
+.redes-container a {
+    text-decoration: none;
+}
