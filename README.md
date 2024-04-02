@@ -1,3 +1,3 @@
 # MaximusCamisaria
 
-<img class="logo" src="./images/logoBranca.jpeg" alt="Logo">
+<img class="logo" src="./imagens/logoBranca.jpeg" alt="Logo">
