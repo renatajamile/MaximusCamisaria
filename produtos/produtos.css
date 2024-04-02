@@ -73,7 +73,6 @@ header .navbar a:hover{
     flex-wrap: wrap;
     gap: 8rem;
     margin-left: 30rem;
-    
 }
 
 .produtos .box-container .box .categoria{
@@ -91,7 +90,6 @@ header .navbar a:hover{
     position: relative;
     margin-bottom: 2rem;
     border-radius: 20px;
-    
 }
 
 
