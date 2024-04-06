@@ -1,20 +1,24 @@
 /* fonte */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 /* cores */
-:root{
-    --azulclaro: #0b99db;
+
+:root {
+    --azulclaro: #0098db;
     --azulescuro: #041521;
     --branco: #f6f6f6;
     --azulbotao: #00008B;
+    --logoescura: #211f20;
 }
 
 /**/
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Orbitron", sans-serif;
+    font-family: "Quicksand", sans-serif;
     outline: none;
     border: none;
     text-transform: capitalize;
@@ -27,8 +31,6 @@ html{
     scroll-padding-top: 6rem;
     overflow-x: hidden;
 }
-
-
 
 /* cabeçalho */
 
@@ -62,29 +64,26 @@ header .navbar a:hover{
     color: var(--azulclaro);
 }
 
+/*produtos*/
+
 .produtos {
     padding-top: 200px; 
     margin-bottom: 20rem;
 }
 
-
-.produtos .box-container{
+.produtos .box-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 8rem;
-    margin-left: 30rem;
+    justify-content: space-around; /* boxes horizontalmente */
+    gap: 2rem;
+    padding: 0 2rem; /* espaçamento à esquerda e à direita */
+    margin: 2rem 0; /* margem da parte superior e inferior da tela */
 }
-
-.produtos .box-container .box .categoria{
-    text-align: center; 
-    color: #00008B;
-}
-
 
 .produtos .box-container .box {
     padding: 30px;
-    flex: 0 0 calc(25% - 1rem); /* Ajusta a largura dos boxes */
-    max-width: calc(25% - 1rem); /* Ajusta a largura máxima dos boxes */
+    flex: 1 0 calc(25% - 1rem); 
+    max-width: calc(25% - 1rem); 
     background-color: var(--branco);
     box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
     position: relative;
@@ -92,6 +91,10 @@ header .navbar a:hover{
     border-radius: 20px;
 }
 
+.produtos .box-container .box .categoria{
+    text-align: center; 
+    color: #00008B;
+}
 
 .produtos .box-container .box:hover{
     transform: scale(1.1);
@@ -107,8 +110,6 @@ header .navbar a:hover{
 .produtos .box-container .box .imagem img{
     height: 25rem;
 }
-
-
 
 .botao{
     background-color: #00008B;
@@ -129,11 +130,12 @@ header .navbar a:hover{
 
 
 /* estilização rodapé*/
+
 .rodape {
     display: flex;
     justify-content: space-between;
     align-items: flex-start; /* Ajuste para iniciar o alinhamento vertical */
-    background-color: #1F2120;
+    background-color: var(--logoescura);
     margin: 0;
     padding: 12rem;
 }
