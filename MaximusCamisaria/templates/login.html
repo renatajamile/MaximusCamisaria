@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/MaximusCamisaria/static/login.css">
+</head>
+<body>
+
+    <div class="voltar">
+        <button onclick="voltar()">Voltar</button>
+    </div>
+
+    <main class="login">
+        <div class="login-container">
+
+            <h2>Login</h2>
+
+            <form action="#">
+                <div class="form-group">
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" name="username" placeholder="Digite seu email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha">
+                </div>
+                <div class="form-group">
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+            <p>Quero criar uma conta! <a href="#">Clique aqui</a></p>
+        </div>
+    
+        <div class="frase">
+            <img src="/MaximusCamisaria/images/logoPNG.png" alt="Logo">
+            <h4>Bem-vindo de volta!</h4>
+            <h5>Faça login, para acessar sua conta.</h5>
+        </div>
+    </main>
+
+    <script>
+        function voltar() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

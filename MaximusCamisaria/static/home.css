@@ -1,0 +1,65 @@
+/* fonte */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* cores */
+
+:root {
+    --azulclaro: #0098db;
+    --azulescuro: #041521;
+    --branco: #f6f6f6;
+    --azulbotao: #00008B;
+    --logoescura: #211f20;
+}
+
+/**/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+/* cabeçalho */
+
+header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background:var(--branco);
+    padding: 2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+}
+
+header .logo{
+    height: 8rem;
+}
+
+header a{
+    text-decoration: none;
+}
+  
+header .navbar a{
+    font-size: 25px;
+    padding: 0 1.5rem;
+    color: var(--azulescuro);
+}
+
+header .navbar a:hover{
+    color: var(--azulclaro);
+}
