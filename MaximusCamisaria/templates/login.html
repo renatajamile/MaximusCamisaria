@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/MaximusCamisaria/static/login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 </head>
 <body>
 
@@ -34,7 +34,7 @@
         </div>
     
         <div class="frase">
-            <img src="/MaximusCamisaria/images/logoPNG.png" alt="Logo">
+            <img src="{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo">
             <h4>Bem-vindo de volta!</h4>
             <h5>Faça login, para acessar sua conta.</h5>
         </div>

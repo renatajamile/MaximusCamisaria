@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maximus Camisaria</title>
-    <link rel="stylesheet" href="/MaximusCamisaria/static/produtos.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='produtos.css') }}">
 </head>
 <body>
 
     <header>
-        <a href="produtos.html" > <img class="logo" src="/MaximusCamisaria/images/logoPNG.png" alt="Logo"></a>
+        <a href="produtos.html" > <img class="logo" src="{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
 
         <nav class="navbar">
             <a href="#inicio">início</a>
@@ -30,7 +30,7 @@
             <div class="box">
                 <h1 class="categoria">CAMISETA TRADICIONAL</h1>
                 <div class="imagem">
-                    <img src="../imagens/tradicional.jpeg" alt="camiseta tradicional">
+                    <img src="{{ url_for('static', filename='images/tradicional.jpeg') }}" alt="camiseta tradicional">
                     <div>
                         <a href="#" > <button class= "botao" type="button">  <strong> PERSONALIZAR </strong></button></a>
                     </div>
@@ -39,7 +39,7 @@
             <div class="box">
                 <h1 class="categoria">CAMISETA RAGLAN</h1>
                 <div class="imagem">
-                    <img src="../imagens/raglan.jpeg" alt="camiseta raglan">
+                    <img src="{{ url_for('static', filename='images/raglan.jpeg') }}" alt="camiseta raglan">
                     <div>
                         <a href="#" > <button class= "botao" type="button">  <strong> PERSONALIZAR </strong></button></a>
                     </div>
@@ -48,7 +48,7 @@
             <div class="box">
                 <h1 class="categoria">CAMISETA ESPORTIVA</h1>
                 <div class="imagem">
-                    <img src="../imagens/esportiva.jpeg" alt="camiseta esportiva">
+                    <img src="{{ url_for('static', filename='images/esportiva.jpeg') }}" alt="camiseta esportiva">
                     <div>
                         <a href="#" > <button class= "botao" type="button">  <strong> PERSONALIZAR </strong></button></a>
                     </div>
@@ -57,7 +57,7 @@
             <div class="box">
                 <h1 class="categoria">UNIFORMES ESCOLARES</h1>
                 <div class="imagem">
-                    <img src="../imagens/uniforme.jpeg" alt="uniformes escolares">
+                    <img src="{{ url_for('static', filename='images/uniforme.jpeg') }}" alt="uniformes escolares">
                     <div>
                         <a href="#" > <button class= "botao" type="button">  <strong> PERSONALIZAR </strong></button></a>
                     </div>
