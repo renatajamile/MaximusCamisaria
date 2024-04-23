@@ -1,3 +1,4 @@
+
 from MaximusCamisaria import database
 
 class Usuario(database.Model):
@@ -13,10 +14,4 @@ class Usuario(database.Model):
     uf = database.Column(database.String(2), nullable=False)
     cep = database.Column(database.String(8), nullable=False)
     telefone = database.Column(database.String, nullable=False) 
-    fotos = database.relationship()
 
-    class Foto(database.Model):
-        id = database.Column(database.Integer, primary_key=True)
-        imagem = database.Column(database.String, nullable=False)
-        data_criacao = database.Column()
-        idUsuario = database.Column()
