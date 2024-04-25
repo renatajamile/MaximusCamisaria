@@ -1,2 +1,4 @@
 meuvenv/
 instance/
+__init__.py
+secret.py 
