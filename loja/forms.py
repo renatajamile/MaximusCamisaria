@@ -22,7 +22,7 @@ class FormCriarConta(FlaskForm):
     uf = StringField("UF", validators=[DataRequired()])
     cep = StringField("CEP", validators=[DataRequired()])
     telefone = StringField("Telefone", validators=[DataRequired()])
-    botao_confirmacao = SubmitField("Criar Conta")
+    botao_confirmacao = SubmitField("Cadastrar")
 
     def validate_email(self, email):
         usuario = Usuario.query.filter_by(email=email.data).first()
