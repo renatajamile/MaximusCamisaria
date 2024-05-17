@@ -1,0 +1,29 @@
+{% extends "homepage.html" %}
+
+{% block style %}
+{% endblock %}
+<body>
+{% block header %}
+<header>
+    <nav class="navbar">
+        <a href="{{ url_for('perfil', usuario=usuario) }}">início</a>
+        <a href="/produtos">produtos</a>
+        <a href="/personalizar">personalizar</a>
+        <a href="#central">central</a>
+        <a href="#favoritos">favoritos</a>
+        <a href="/carrinho">carrinho</a>
+        <a href="/login">Login</a>
+    </nav>
+
+</header>
+{% endblock %}
+
+{% block main %}
+<main> Perfil do usuário: olá  {{ usuario }}</main>
+<a href="{{ url_for('logout') }}">Sair</a>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+</body>
+

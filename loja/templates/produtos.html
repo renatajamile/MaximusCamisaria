@@ -1,0 +1,97 @@
+{% extends "homepage.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/produtos.css') }}">
+{% endblock %}
+
+{% block main %}
+<section class="produtos" id="produtos">
+     
+    <div class="box-container">
+        
+        <div class="box">
+            <h1 class="categoria">CAMISETA TRADICIONAL</h1>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/categorias/tradicional.jpeg') }}" alt="camiseta tradicional">
+                <div>
+                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <h1 class="categoria">CAMISETA RAGLAN</h1>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/categorias/raglan.jpeg') }}" alt="camiseta raglan">
+                <div>
+                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <h1 class="categoria">CAMISETA ESPORTIVA</h1>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/categorias/esportiva.jpeg') }}" alt="camiseta esportiva">
+                <div>
+                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <h1 class="categoria">UNIFORMES ESCOLARES</h1>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/categorias/uniforme.jpeg') }}" alt="uniformes escolares">
+                <div>
+                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <h1 class="categoria">CAMISETA MANGA LONGA</h1>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/categorias/longa.jpeg') }}" alt="camiseta manga longa">
+                <div>
+                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <h1 class="categoria">CAMISETA GOLA EM V</h1>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/categorias/golaV.jpeg') }}" alt="camiseta gola V">
+                <div>
+                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <h1 class="categoria">CAMISETA GOLA POLO</h1>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/categorias/golaPolo.jpeg') }}" alt="camiseta gola polo">
+                <div>
+                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <h1 class="categoria">CAMISETA OVERSIZED</h1>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/categorias/oversized.jpeg') }}" alt="camiseta oversized">
+                <div>
+                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <h1 class="categoria">CAMISETA PERSONALIZADA</h1>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/categorias/personalizada.jpeg') }}" alt="camiseta personalizada">
+                <div>
+                    <a href="/personalizar"> <button class= "botao" type="button">  <strong> PERSONALIZAR </strong></button></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+{% endblock %}
