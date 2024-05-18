@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+
+    <div class="voltar">
+        <button onclick="voltar()">Voltar</button>
+    </div>
+
+    <main class="login">
+        <div class="login-container">
+
+            <h2>Login</h2>
+
+            <form method="POST">
+
+                {{form.csrf_token }}
+               
+                {{form.email.label() }}
+                {{form.email() }}
+                
+                {{form.senha.label() }}
+                {{form.senha() }}
+
+                {{form.botao_confirmacao() }}
+           
+            </form>
+            <p>Quero criar uma conta! <a href="/cadastro">Clique aqui</a></p>
+        </div>
+    
+        <div class="frase">
+            <img src="{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo">
+            <h4>Bem-vindo de volta!</h4>
+            <h5>Faça login, para acessar sua conta.</h5>
+        </div>
+    </main>
+
+    <script>
+        function voltar() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

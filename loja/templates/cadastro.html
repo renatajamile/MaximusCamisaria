@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+    <title>Cadastro</title>
+</head>
+
+<body>
+
+    <button onclick="window.history.back()" class="botao-voltar">&#8592;</button>
+  
+    <div class="container">
+        <div class="form-image">
+            <img src="{{ url_for('static', filename='images/logoPNG.png') }}" class="imagem-redonda">
+        </div>
+
+        <div class="form">
+                <form method="POST">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Cadastre-se</h1>
+                    </div>
+                </div>
+
+                    {{form.csrf_token }}
+                   
+                    {{form.username.label() }}
+                    {{form.username() }}
+                    
+                    {{form.userlastname.label() }}
+                    {{form.userlastname() }}
+                    
+                    {{form.email.label() }}
+                    {{form.email() }}
+
+                    {{form.senha.label() }}
+                    {{form.senha() }}
+
+                    {{form.confirmacao_senha.label() }}
+                    {{form.confirmacao_senha() }}
+
+                    {{form.cpf.label() }}
+                    {{form.cpf() }}
+
+                    {{form.endereco.label() }}
+                    {{form.endereco() }}
+
+                    {{form.complemento.label() }}
+                    {{form.complemento() }}
+
+                    {{form.cidade.label() }}
+                    {{form.cidade() }}
+
+                    {{form.uf.label() }}
+                    {{form.uf() }}
+
+                    {{form.cep.label() }}
+                    {{form.cep() }}
+
+                    {{form.telefone.label() }}
+                    {{form.telefone() }}
+
+                    {{form.botao_confirmacao() }}
+
+            </form>
+
+            <div class="login-link">
+                Já possui uma conta? <a href="/login">Faça login aqui</a>.
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
