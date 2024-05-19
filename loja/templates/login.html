@@ -18,21 +18,25 @@
             <h2>Login</h2>
 
             <form method="POST">
+                {{ form.csrf_token }}
 
-                {{form.csrf_token }}
-               
-                {{form.email.label() }}
-                {{form.email() }}
-                
-                {{form.senha.label() }}
-                {{form.senha() }}
+                <div class="form-group">
+                    {{ form.email.label(class_="form-label") }}
+                    {{ form.email(class_="form-input") }}
+                </div>
 
-                {{form.botao_confirmacao() }}
-           
+                <div class="form-group">
+                    {{ form.senha.label(class_="form-label") }}
+                    {{ form.senha(class_="form-input") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.botao_confirmacao(class_="form-button") }}
+                </div>
             </form>
             <p>Quero criar uma conta! <a href="/cadastro">Clique aqui</a></p>
         </div>
-    
+
         <div class="frase">
             <img src="{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo">
             <h4>Bem-vindo de volta!</h4>

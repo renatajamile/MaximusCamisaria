@@ -1,19 +1,14 @@
-/* fonte */
-
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 /* cores */
-
 :root {
-    --azulclaro: #0098db;
-    --azulescuro: #041521;
-    --branco: #f6f6f6;
-    --azulbotao: #00008B;
-    --logoescura: #211f20;
+    --azulClaro: #0098db;
+    --fundo: #f6f6f6;
+    --azulEscuro: #00008B;
+    --rodape: #211f20;
 }
 
-/**/
-
+/* reset */
 * {
     margin: 0;
     padding: 0;
@@ -26,7 +21,6 @@
 }
 
 /*botao voltar*/
-
 .voltar {
     position: fixed;
     top: 2rem;
@@ -35,7 +29,7 @@
 
 .voltar button {
     padding: 2px;
-    background-color: var(--azulclaro);
+    background-color: var(--azulEscuro);
     width: 5rem;
     height: 2rem;
     border: none;
@@ -46,11 +40,10 @@
 }
 
 .voltar button:hover {
-    background-color: var(--azulbotao);
+    background-color: var(--azulClaro);
 }
 
 /*main*/
-
 .login {
     display: flex;
     justify-content: center;
@@ -70,42 +63,42 @@
 }
 
 .login-container h2 {
-    color: var(--azulclaro);
+    color: var(--azulEscuro);
     font-size: 46px;
     text-align: center;
     margin-bottom: 36px;
 }
 
 .form-group {
-    color: var(--azulclaro);
+    color: var(--azulEscuro);
     margin-bottom: 15px;
 }
 
-.form-group label {
+.form-label {
     font-weight: bold;
 }
 
-.form-group input {
+.form-input {
     background-color: #f6f6f6;
     width: 150%;
     padding: 10px;
     border-radius: 30px;
 }
 
-.form-group button {
+.form-button {
     width: 150%;
     padding: 10px;
-    background-color: var(--azulclaro);
+    background-color: var(--azulEscuro);
     color: #ffffff;
     border-radius: 30px;
     cursor: pointer;
 }
 
-.form-group button:hover {
-    background-color: var(--azulbotao);
+.form-button:hover {
+    background-color: var(--azulClaro);
 }
 
-p{
+p {
     font-size: 12px;
 }
 
@@ -119,12 +112,12 @@ p{
     margin-bottom: 12px;
 }
 
-h4{
+h4 {
     font-size: 23px;
-    color: var(--azulclaro);
+    color: var(--azulEscuro);
     margin-bottom: 12px;
 }
 
-h5{
+h5 {
     font-size: 20px;
 }
