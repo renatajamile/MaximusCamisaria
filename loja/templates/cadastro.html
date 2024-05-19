@@ -15,63 +15,87 @@
   
     <div class="container">
         <div class="form-image">
-            <img src="{{ url_for('static', filename='images/logoPNG.png') }}" class="imagem-redonda">
+            <img src="{{ url_for('static', filename='images/logoPNG.png') }}">
         </div>
 
         <div class="form">
-                <form method="POST">
-                <div class="form-header">
-                    <div class="title">
-                        <h1>Cadastre-se</h1>
-                    </div>
+            <div class="form-header">
+                <div class="title">
+                    <h1>Cadastre-se</h1>
+                </div>
+            </div>
+            
+            <form method="POST">
+                {{ form.csrf_token }}
+
+                <div class="form-group">
+                    {{ form.username.label(class_="form-label") }}
+                    {{ form.username(class_="form-input") }}
                 </div>
 
-                    {{form.csrf_token }}
-                   
-                    {{form.username.label() }}
-                    {{form.username() }}
-                    
-                    {{form.userlastname.label() }}
-                    {{form.userlastname() }}
-                    
-                    {{form.email.label() }}
-                    {{form.email() }}
+                <div class="form-group">
+                    {{ form.userlastname.label(class_="form-label") }}
+                    {{ form.userlastname(class_="form-input") }}
+                </div>
 
-                    {{form.senha.label() }}
-                    {{form.senha() }}
+                <div class="form-group">
+                    {{ form.email.label(class_="form-label") }}
+                    {{ form.email(class_="form-input") }}
+                </div>
 
-                    {{form.confirmacao_senha.label() }}
-                    {{form.confirmacao_senha() }}
+                <div class="form-group">
+                    {{ form.senha.label(class_="form-label") }}
+                    {{ form.senha(class_="form-input") }}
+                </div>
 
-                    {{form.cpf.label() }}
-                    {{form.cpf() }}
+                <div class="form-group">
+                    {{ form.confirmacao_senha.label(class_="form-label") }}
+                    {{ form.confirmacao_senha(class_="form-input") }}
+                </div>
 
-                    {{form.endereco.label() }}
-                    {{form.endereco() }}
+                <div class="form-group">
+                    {{ form.cpf.label(class_="form-label") }}
+                    {{ form.cpf(class_="form-input") }}
+                </div>
 
-                    {{form.complemento.label() }}
-                    {{form.complemento() }}
+                <div class="form-group">
+                    {{ form.endereco.label(class_="form-label") }}
+                    {{ form.endereco(class_="form-input") }}
+                </div>
 
-                    {{form.cidade.label() }}
-                    {{form.cidade() }}
+                <div class="form-group">
+                    {{ form.complemento.label(class_="form-label") }}
+                    {{ form.complemento(class_="form-input") }}
+                </div>
 
-                    {{form.uf.label() }}
-                    {{form.uf() }}
+                <div class="form-group">
+                    {{ form.cidade.label(class_="form-label") }}
+                    {{ form.cidade(class_="form-input") }}
+                </div>
 
-                    {{form.cep.label() }}
-                    {{form.cep() }}
+                <div class="form-group">
+                    {{ form.uf.label(class_="form-label") }}
+                    {{ form.uf(class_="form-input") }}
+                </div>
 
-                    {{form.telefone.label() }}
-                    {{form.telefone() }}
+                <div class="form-group">
+                    {{ form.cep.label(class_="form-label") }}
+                    {{ form.cep(class_="form-input") }}
+                </div>
 
-                    {{form.botao_confirmacao() }}
+                <div class="form-group">
+                    {{ form.telefone.label(class_="form-label") }}
+                    {{ form.telefone(class_="form-input") }}
+                </div>
 
+                <div class="form-button-group">
+                    {{ form.botao_confirmacao(class_="form-button") }}
+                </div>
             </form>
 
             <div class="login-link">
                 Já possui uma conta? <a href="/login">Faça login aqui</a>.
             </div>
-
         </div>
     </div>
 </body>

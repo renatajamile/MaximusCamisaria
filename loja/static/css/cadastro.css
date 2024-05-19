@@ -1,165 +1,135 @@
-@import url('https://fonts.google.com/share?query=inter');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* cores */
+:root {
+    --azulClaro: #0098db;
+    --fundo: #f6f6f6;
+    --azulEscuro: #00008B;
+    --rodape: #211f20;
+}
+
+/* reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'inter', sans-serif;
+    font-family: "Quicksand", sans-serif;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: .2s linear;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-
+/*botao voltar*/
 .botao-voltar {
     position: fixed;
-    top: 30px;
-    left: 30px;
-    padding: 10px;
-    font-size: 20px; 
-    background-color: #2cc4d4;
-    color: #fff;
+    top: 2rem;
+    left: 2rem;
+    padding: 2px;
+    background-color: var(--azulEscuro);
+    width: 5rem;
+    height: 2rem;
     border: none;
-    border-radius: 50px;
+    font-size: 16px;
+    color: white;
+    border-radius: 10px;
     cursor: pointer;
-    z-index: 1000;
 }
 
 .botao-voltar:hover {
-    background-color: #0056b3;
+    background-color: var(--azulClaro);
 }
 
+/*main*/
 .container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 50px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
 }
 
-.imagem-redonda {
-    border-radius: 8%;
-    width: 200px; 
-    height: auto; 
-    margin: 0 auto;
-    display: block;
+.form-image img {
+    width: 20rem;
+    border-radius: 0; 
+    margin: 10rem;
 }
 
 .form {
-    margin-top: 40px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-.form-header {
+.form-header .title h1 {
+    color: var(--azulEscuro);
+    font-size: 46px;
     text-align: center;
+    margin-bottom: 36px;
 }
 
-.title h1 {
-    color: #333;
-    text-align: left;
-    
-}
-
-.form-header h1::after {
-    content: '';
-    display: block;
-    width: 6rem;
-    height: 0.3rem;
-    background-color: #2cc4d4;
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 500px;
     margin: 0 auto;
-    position: absolute;
-    border-radius: 10px;
- }
-
-.input-group {
-    margin-top: 40px;
 }
 
-.input-box {
-    margin-bottom: 15px;
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--azulEscuro);
+    width: calc(50% - 20px); /* Reduz a largura dos campos */
 }
 
-.input-box label {
-    display: block;
-    margin-bottom: 5px;
-    color: #666;
+.form-label {
+    font-weight: bold;
 }
 
-.input-box input[type="text"],
-.input-box input[type="email"],
-.input-box input[type="password"],
-.input-box select {
+.form-input {
+    background-color: #f6f6f6;
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
+    border-radius: 20px;
 }
 
-.input-box select {
-    height: 40px;
-}
-
-.form-group button {
+.form-button-group {
     width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-button {
+    width: 200px;
     padding: 10px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
+    background-color: var(--azulEscuro);
+    color: #ffffff;
+    border-radius: 20px;
     cursor: pointer;
-    outline: none;
+}
+
+.form-button:hover {
+    background-color: var(--azulClaro);
 }
 
 .login-link {
-    text-align: center;
+    font-size: 12px;
     margin-top: 20px;
-}
-
-.social-buttons {
-    margin-top: 20px;
-}
-
-.social-buttons button {
-    width: calc(100% - 10px);
-    margin-right: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    outline: none;
-    margin-top: 10px;
-}
-
-.or-divider {
     text-align: center;
-    margin: 20px 0;
 }
 
-.or-divider span {
-    background-color: #fff;
-    padding: 0 10px;
+.login-link a {
+    color: var(--azulEscuro);
+    text-decoration: none;
 }
 
-.or-divider::before,
-.or-divider::after {
-    content: '';
-    display: inline-block;
-    width: 30%;
-    height: 1px;
-    background-color: #ccc;
-}
-
-
-.facebook {
-    background-color: #3b5998;
-}
-
-.google {
-    background-color: #db4437;
-}
-
-.apple {
-    background-color: #000;
+.login-link a:hover {
+    text-decoration: underline;
 }
