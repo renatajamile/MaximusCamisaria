@@ -2,4 +2,4 @@
 
 teste
 
-<img class="logo" src="./imagens/logoBranca.jpeg" alt="Logo">
+<img class="logo" src="./loja/static/images/logoBranca.jpeg" alt="Logo">
