@@ -93,7 +93,7 @@
 }
 
 .botao {
-    background-color: #00008B;
+    background-color:var(--azulclaro);
     width: 20%;
     height: 5rem;
     border: none;
@@ -106,7 +106,7 @@
 }
 
 .botao:hover {
-    background-color: var(--azulclaro);
+    background-color:#041521;
 }
 
 

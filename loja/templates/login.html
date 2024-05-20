@@ -9,8 +9,9 @@
 <body>
 
     <div class="voltar">
-        <button onclick="voltar()">Voltar</button>
+        <a href="{{ url_for('homepage') }}"><button>Voltar</button></a>
     </div>
+
 
     <main class="login">
         <div class="login-container">
@@ -44,10 +45,5 @@
         </div>
     </main>
 
-    <script>
-        function voltar() {
-            window.history.back();
-        }
-    </script>
 </body>
 </html>

@@ -1,18 +1,17 @@
-{% extends "homepage.html" %}
+{% extends "perfil.html" %}
 
 {% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
 {% endblock %}
 <body>
-{% block header %}
-{% endblock %}
 
 {% block main %}
-<main> Carrinho: {{ usuario }} </main>
-<h1> Acompanhe suas compras aqui </h1>
+<main> 
+    <h1> Minha Conta </h1>
+    <p>Olá, <strong>{{ usuario }}</strong>! Este é o seu espaço. Acesse seu perfil e acompanhe seus pedidos aqui</p>
+    <h1>Aqui ficará o espaço do cliente acompanhar os pedidos e o seu perfil</h1>
+</main>
 
 {% endblock %}
 
-{% block footer %}
-{% endblock %}
 </body>
-

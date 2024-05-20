@@ -5,7 +5,45 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/produtos.css') }}">
 {% endblock %}
 
+{% block header %}
+<header>
+    {% if current_user.is_authenticated %}
+    <a href="/" > <img class="logo" src= "{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
+    <nav class="navbar">
+        <a href="/">início</a>
+        <a href="/produtos">produtos</a>
+        <a href="/personalizar">personalizar</a>
+        <a href="/fale">fale conosco</a>
+        <a href="/carrinho">minha conta</a>
+        <a href="{{ url_for('logout') }}">  <button class= "botao2" type="button">  <strong> SAIR </strong></button></a>
+    {% else %}
+        <a href="/" > <img class="logo" src= "{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
+        <nav class="navbar">
+            <a href="/">início</a>
+            <a href="/produtos">produtos</a>
+            <a href="/cadastro"><button class= "botao1" type="button">  <strong> CADASTRE-SE </strong></button></a>
+            <a href="/login"><button class= "botao1" type="button">  <strong> LOGIN </strong></button></a>
+        </nav>
+    </nav>
+    {% endif %}
+</header>
+{% endblock %}
 {% block main %}
+
+<main>
+    {% if current_user.is_authenticated %}
+    <h1> Olá, {{current_user.username}} !</h1>
+    <h1> Veja os produtos que temos disponíveis </h1>
+    <a href="{{ url_for('personalizar') }}" > <button class= "botao" type="button">  <strong> ENCOMENDAR </strong></button></a>
+    {% else %}
+    <h1> Olá!</h1>
+    <p>Por favor, <a href="{{ url_for('login') }}">faça login</a> ou <a href="{{ url_for('criarconta') }}">crie uma conta</a>.</p>
+    <h1> Veja os produtos que temos disponíveis </h1>
+    {% endif %}
+
+    
+</main>
+
 <section class="produtos" id="produtos">
      
     <div class="box-container">
@@ -14,84 +52,64 @@
             <h1 class="categoria">CAMISETA TRADICIONAL</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/tradicional.jpeg') }}" alt="camiseta tradicional">
-                <div>
-                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
-                </div>
             </div>
         </div>
         <div class="box">
             <h1 class="categoria">CAMISETA RAGLAN</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/raglan.jpeg') }}" alt="camiseta raglan">
-                <div>
-                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
-                </div>
+
             </div>
         </div>
         <div class="box">
             <h1 class="categoria">CAMISETA ESPORTIVA</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/esportiva.jpeg') }}" alt="camiseta esportiva">
-                <div>
-                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
-                </div>
             </div>
         </div>
         <div class="box">
             <h1 class="categoria">UNIFORMES ESCOLARES</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/uniforme.jpeg') }}" alt="uniformes escolares">
-                <div>
-                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
-                </div>
             </div>
         </div>
         <div class="box">
             <h1 class="categoria">CAMISETA MANGA LONGA</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/longa.jpeg') }}" alt="camiseta manga longa">
-                <div>
-                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
-                </div>
+
             </div>
         </div>
         <div class="box">
             <h1 class="categoria">CAMISETA GOLA EM V</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/golaV.jpeg') }}" alt="camiseta gola V">
-                <div>
-                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
-                </div>
+
             </div>
         </div>
         <div class="box">
             <h1 class="categoria">CAMISETA GOLA POLO</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/golaPolo.jpeg') }}" alt="camiseta gola polo">
-                <div>
-                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
-                </div>
+
             </div>
         </div>
         <div class="box">
             <h1 class="categoria">CAMISETA OVERSIZED</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/oversized.jpeg') }}" alt="camiseta oversized">
-                <div>
-                    <a href="#" > <button class= "botao" type="button">  <strong> COMPRAR </strong></button></a>
-                </div>
+
             </div>
         </div>
         <div class="box">
-            <h1 class="categoria">CAMISETA PERSONALIZADA</h1>
+            <h1 class="categoria">PERSONALIZAR</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/personalizada.jpeg') }}" alt="camiseta personalizada">
                 <div>
-                    <a href="/personalizar"> <button class= "botao" type="button">  <strong> PERSONALIZAR </strong></button></a>
+                    <a href="/personalizar"> <button class= "botao" type="button">  <strong> ENCOMENDAR </strong></button></a>
                 </div>
             </div>
         </div>
-        
     </div>
 </section>
 {% endblock %}
