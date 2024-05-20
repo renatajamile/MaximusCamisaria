@@ -1,7 +1,7 @@
 /*produtos*/
 
 .produtos {
-    padding-top: 200px; 
+    padding-top: 5px; 
     margin-bottom: 20rem;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .produtos .box-container .box {
-    padding: 30px;
+    padding: 10px;
     flex: 1 0 calc(25% - 1rem); 
     max-width: calc(25% - 1rem); 
     background-color: var(--branco);
@@ -46,7 +46,7 @@
 }
 
 .botao{
-    background-color: #00008B;
+    background-color:var(--azulclaro);
     width: 20rem;
     height: 5rem;
     border: none;
@@ -58,5 +58,5 @@
 }
 
 .botao:hover{
-    background-color:var(--azulclaro);
+    background-color:#041521;
 }

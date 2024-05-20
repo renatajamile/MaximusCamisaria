@@ -4,7 +4,20 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/personalizar.css') }}">
 {% endblock %}
+{% block header %}
+<header>
+    <a href="/" > <img class="logo" src= "{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
+    <nav class="navbar">
+        <a href="{{ url_for('perfil', usuario=usuario) }}">início</a>
+        <a href="/produtos">produtos</a>
+        <a href="/personalizar">personalizar</a>
+        <a href="/fale">fale conosco</a>
+        <a href="/carrinho">minha conta</a>
+        <a href="{{ url_for('logout') }}">  <button class= "botao2" type="button">  <strong> SAIR </strong></button></a>
+    </nav>
 
+</header>
+{% endblock %}
 {% block main %}
 <section class="personalizar">
     <div class="boxContainer">

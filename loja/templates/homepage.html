@@ -16,17 +16,24 @@
         <nav class="navbar">
             <a href="/">início</a>
             <a href="/produtos">produtos</a>
-            <a href="/personalizar">personalizar</a>
-            <a href="#central">central</a>
-            <a href="#favoritos">favoritos</a>
-            <a href="/login">Login</a>
+            <a href="/cadastro"><button class= "botao1" type="button">  <strong> CADASTRE-SE </strong></button></a>
+            <a href="/login"><button class= "botao1" type="button">  <strong> LOGIN </strong></button></a>
         </nav>
 
     </header>
     {% endblock %}
 
     {% block main %}
-    <main> olá </main>
+        <main> <h1>Bem-vindo!</h1>
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('perfil', usuario=current_user.username) }}">Ir para o Perfil</a>
+                {% else %}
+                <p>Por favor, <a href="{{ url_for('login') }}">faça login</a> ou <a href="{{ url_for('criarconta') }}">crie uma conta</a>.</p>
+                {% endif %}
+            
+                <h1>Aqui ficará o conteúdo da Página Principal</h1>
+        </main>
+
     {% endblock %}
 
     {% block footer %}

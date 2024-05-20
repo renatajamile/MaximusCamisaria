@@ -1,0 +1,19 @@
+{% extends "perfil.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+{% endblock %}
+<body>
+
+{% block main %}
+<main> 
+    <h1>Fale Conosco</h1>
+    <p>Olá, <strong>{{ usuario }}</strong>! Como podemos ajudar você?</p>
+    <h1>Aqui ficará o formulario de fale conosco</h1>
+</main>
+
+{% endblock %}
+
+</body>
+
+

@@ -21,10 +21,13 @@
 }
 
 /*botao voltar*/
-.botao-voltar {
+.voltar {
     position: fixed;
     top: 2rem;
     left: 2rem;
+}
+
+.voltar button {
     padding: 2px;
     background-color: var(--azulEscuro);
     width: 5rem;
@@ -32,14 +35,13 @@
     border: none;
     font-size: 16px;
     color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     cursor: pointer;
 }
 
-.botao-voltar:hover {
+.voltar button:hover {
     background-color: var(--azulClaro);
 }
-
 /*main*/
 .container {
     display: flex;

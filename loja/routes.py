@@ -7,7 +7,9 @@ from loja.forms import FormLogin, FormCriarConta
 
 @app.route("/")
 def homepage():
-    return render_template ("homepage.html")
+    if current_user.is_authenticated:
+        return redirect(url_for('perfil', usuario=current_user.username))
+    return render_template("homepage.html")
 
 @app.route("/login", methods =["GET", "POST"])
 def login():
@@ -43,16 +45,23 @@ def perfil(usuario):
     return render_template("perfil.html", usuario=usuario)
 
 @app.route("/personalizar")
+@login_required
 def personalizar():
-    return render_template ("personalizar.html")
+    return render_template ("personalizar.html", usuario=current_user.username)
 
 @app.route("/produtos")
 def produtos():
     return render_template ("produtos.html")
 
+@app.route("/fale")
+@login_required
+def fale():
+    return render_template("fale.html", usuario=current_user.username)
+
 @app.route("/carrinho")
+@login_required
 def carrinho():
-    return render_template ("carrinho.html")
+    return render_template ("carrinho.html", usuario=current_user.username)
 
 @app.route("/logout")
 @login_required
