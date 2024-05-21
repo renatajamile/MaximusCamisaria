@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximus Camisaria</title>
+    {% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+    {% endblock %}
+</head>
+<body>
+    {% block header %}
+    <header>
+        <a href="/" > <img class="logo" src= "{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
+
+        <nav class="navbar">
+            <a href="/">início</a>
+            <a href="/produtos">produtos</a>
+            <a href="/cadastro"><button class= "botao1" type="button">  <strong> CADASTRE-SE </strong></button></a>
+            <a href="/login"><button class= "botao1" type="button">  <strong> LOGIN </strong></button></a>
+        </nav>
+
+    </header>
+    {% endblock %}
+
+    {% block main %}
+        <main> <h1>Bem-vindo!</h1>
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('perfil', usuario=current_user.username) }}">Ir para o Perfil</a>
+                {% else %}
+                <p>Por favor, <a href="{{ url_for('login') }}">faça login</a> ou <a href="{{ url_for('criarconta') }}">crie uma conta</a>.</p>
+                {% endif %}
+            
+                <h1>Aqui ficará o conteúdo da Página Principal</h1>
+        </main>
+
+    {% endblock %}
+
+    {% block footer %}
+<footer class="rodape">
+    <div>
+        <div class="redes-container">
+            <h3 class="titulo-rodape"> ENTRE EM CONTATO: </h3>
+            <a href="https://www.instagram.com/">
+                <img class="redes-sociais" src="{{ url_for('static', filename='images/rodape/insta.webp') }}" alt="Instagram">
+                <span class="texto-redes-sociais">maximuscamisariaoficial</span>
+            </a>
+            <br>
+            <a href="https://web.whatsapp.com/">
+                <img class="redes-sociais" src="{{ url_for('static', filename='images/rodape/whatsapp.png') }}" alt="WhatsApp">
+                <span class="texto-redes-sociais">(38) 9914-0566</span>
+            </a>
+        </div>
+    </div>
+    <a href="/"> <img class="logo-rodape" src="{{ url_for('static', filename='images/rodape/logoRodapé.jpeg') }}" alt="imagem"> </a>
+</footer>
+{% endblock %}
+
+</body>
+</html>

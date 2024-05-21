@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* cores */
+:root {
+    --azulClaro: #0098db;
+    --fundo: #f6f6f6;
+    --azulEscuro: #00008B;
+    --rodape: #211f20;
+}
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+/*botao voltar*/
+.voltar {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+}
+
+.voltar button {
+    padding: 2px;
+    background-color: var(--azulEscuro);
+    width: 5rem;
+    height: 2rem;
+    border: none;
+    font-size: 16px;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.voltar button:hover {
+    background-color: var(--azulClaro);
+}
+/*main*/
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+}
+
+.form-image img {
+    width: 20rem;
+    border-radius: 0; 
+    margin: 10rem;
+}
+
+.form {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-header .title h1 {
+    color: var(--azulEscuro);
+    font-size: 46px;
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--azulEscuro);
+    width: calc(50% - 20px); /* Reduz a largura dos campos */
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-input {
+    background-color: #f6f6f6;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.form-button-group {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-button {
+    width: 200px;
+    padding: 10px;
+    background-color: var(--azulEscuro);
+    color: #ffffff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: var(--azulClaro);
+}
+
+.login-link {
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-link a {
+    color: var(--azulEscuro);
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}

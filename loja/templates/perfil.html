@@ -1,0 +1,34 @@
+{% extends "homepage.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+{% endblock %}
+<body>
+{% block header %}
+<header>
+    <a href="/" > <img class="logo" src= "{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
+    <nav class="navbar">
+        <a href="{{ url_for('perfil', usuario=usuario) }}">início</a>
+        <a href="/produtos">produtos</a>
+        <a href="/personalizar">personalizar</a>
+        <a href="/fale">fale conosco</a>
+        <a href="/carrinho">minha conta</a>
+        <a href="{{ url_for('logout') }}">  <button class= "botao" type="button">  <strong> SAIR </strong></button></a>
+    </nav>
+
+</header>
+{% endblock %}
+
+{% block main %}
+<main> 
+
+        <h1> Olá, {{ usuario }}!</h1>
+
+        <h1>Aqui ficará o conteúdo da Página Principal se o usuário estiver Logado</h1>
+       
+</main>
+
+{% endblock %}
+
+</body>
+
