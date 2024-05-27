@@ -8,27 +8,25 @@
 <header>
     <a href="/" > <img class="logo" src= "{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
     <nav class="navbar">
-        <a href="{{ url_for('perfil', usuario=usuario) }}">início</a>
+        <a href="{{ url_for('perfil', id_usuario=current_user.id) }}">início</a>
         <a href="/produtos">produtos</a>
         <a href="/personalizar">personalizar</a>
         <a href="/fale">fale conosco</a>
         <a href="/carrinho">minha conta</a>
-        <a href="{{ url_for('logout') }}">  <button class= "botao" type="button">  <strong> SAIR </strong></button></a>
+        <a href="{{ url_for('logout') }}">  <button class= "botao1" type="button">  <strong> SAIR </strong></button></a>
     </nav>
 
 </header>
 {% endblock %}
 
-{% block main %}
+{% block main1 %}
 <main> 
-
-        <h1> Olá, {{ usuario }}!</h1>
-
-        <h1>Aqui ficará o conteúdo da Página Principal se o usuário estiver Logado</h1>
-       
+    <div class=Subtitulo-base>
+    <h1 class=subtitulo> Olá, {{current_user.username}}!</h1>
+    </div>       
+{% endblock %}
 </main>
 
-{% endblock %}
 
 </body>
 

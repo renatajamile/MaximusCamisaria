@@ -15,7 +15,7 @@
         <a href="/personalizar">personalizar</a>
         <a href="/fale">fale conosco</a>
         <a href="/carrinho">minha conta</a>
-        <a href="{{ url_for('logout') }}">  <button class= "botao2" type="button">  <strong> SAIR </strong></button></a>
+        <a href="{{ url_for('logout') }}">  <button class= "botao1" type="button">  <strong> SAIR </strong></button></a>
     {% else %}
         <a href="/" > <img class="logo" src= "{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
         <nav class="navbar">
@@ -28,27 +28,25 @@
     {% endif %}
 </header>
 {% endblock %}
-{% block main %}
+{% block main1 %}
 
 <main>
+    <div class=Subtitulo-base>
     {% if current_user.is_authenticated %}
-    <h1> Olá, {{current_user.username}} !</h1>
-    <h1> Veja os produtos que temos disponíveis </h1>
-    <a href="{{ url_for('personalizar') }}" > <button class= "botao" type="button">  <strong> ENCOMENDAR </strong></button></a>
+    <h1 class=subtitulo> Olá, {{current_user.username}} !</h1>
+    <h1 class=subtitulo> Veja os produtos que temos disponíveis: </h1>
     {% else %}
-    <h1> Olá!</h1>
-    <p>Por favor, <a href="{{ url_for('login') }}">faça login</a> ou <a href="{{ url_for('criarconta') }}">crie uma conta</a>.</p>
-    <h1> Veja os produtos que temos disponíveis </h1>
+    <h1 class=subtitulo> Olá!</h1>
+    <p class="texto">Por favor, <a href="{{ url_for('login') }}">faça login</a> ou <a href="{{ url_for('criarconta') }}">crie uma conta</a>.</p>
+    <h1 class=subtitulo> Veja os produtos que temos disponíveis: </h1>
     {% endif %}
+    </div>
+    {% endblock %}
 
-    
-</main>
-
+{% block main2 %}
 <section class="produtos" id="produtos">
-     
-    <div class="box-container">
-        
-        <div class="box">
+        <div class="box-container">
+            <div class="box">
             <h1 class="categoria">CAMISETA TRADICIONAL</h1>
             <div class="imagem">
                 <img src="{{ url_for('static', filename='images/categorias/tradicional.jpeg') }}" alt="camiseta tradicional">
@@ -112,4 +110,5 @@
         </div>
     </div>
 </section>
+</main>
 {% endblock %}

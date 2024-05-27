@@ -9,7 +9,7 @@
 <body>
 
     <div class="voltar">
-        <a href="{{ url_for('homepage') }}"><button>Voltar</button></a>
+        <a href="{{ url_for('homepage') }}"><button><strong>VOLTAR</strong></button></a>
     </div>
 
 
@@ -35,9 +35,11 @@
                     {{ form.botao_confirmacao(class_="form-button") }}
                 </div>
             </form>
-            <p>Quero criar uma conta! <a href="/cadastro">Clique aqui</a></p>
-        </div>
 
+            <div class="login-link">
+                <strong> Quero criar uma conta! </strong> <a href="/cadastro"><strong>CLIQUE AQUI</strong></a></strong></a>.
+            </div>
+        </div>
         <div class="frase">
             <img src="{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo">
             <h4>Bem-vindo de volta!</h4>

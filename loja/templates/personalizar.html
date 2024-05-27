@@ -4,110 +4,101 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/personalizar.css') }}">
 {% endblock %}
+
 {% block header %}
 <header>
-    <a href="/" > <img class="logo" src= "{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
+    <a href="/"> <img class="logo" src="{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
     <nav class="navbar">
-        <a href="{{ url_for('perfil', usuario=usuario) }}">início</a>
+        <a href="{{ url_for('perfil', id_usuario=current_user.id) }}">início</a>
         <a href="/produtos">produtos</a>
         <a href="/personalizar">personalizar</a>
         <a href="/fale">fale conosco</a>
         <a href="/carrinho">minha conta</a>
-        <a href="{{ url_for('logout') }}">  <button class= "botao2" type="button">  <strong> SAIR </strong></button></a>
+        <a href="{{ url_for('logout') }}"> <button class="botao1" type="button"> <strong> SAIR </strong></button></a>
     </nav>
-
 </header>
 {% endblock %}
-{% block main %}
+
+{% block main1 %}
+<main>
+    <div class="Subtitulo-base">
+        <h1 class="subtitulo"> Olá, {{current_user.username}} !</h1>
+        <h1 class="texto"> Personalize o seu pedido e encaminhe para orçamento: </h1>
+    </div>
+{% endblock %}
+
+{% block main2 %}
 <section class="personalizar">
     <div class="boxContainer">
         <div class="box">
-            
-            <div class="selecao">
-                <select id="tipo-camiseta" onchange="selecionarCamiseta(this.value)">
-                    <option value="personalizada">Selecione para personalizar</option>
-                    <option value="tradicional">Camiseta Tradicional</option>
-                    <option value="raglan">Camiseta Raglan</option>
-                    <option value="esportiva">Camiseta Esportiva</option>
-                    <option value="uniforme">Uniformes Escolares</option>
-                    <option value="longa">Camiseta Manga Longa</option>
-                    <option value="golaV">Camiseta Gola V</option>
-                    <option value="golaPolo">Camiseta Gola Polo</option>
-                    <option value="oversized">Camiseta Oversized</option>
-                </select>
-            </div>
-
             <div class="formulario-container">
                 <div class="imagem-grande">
                     <img id="imagem-grande" src="{{ url_for('static', filename='images/categorias/personalizada.jpeg') }}" alt="Camiseta Escolhida">
                 </div>
 
                 <div class="formulario">
-                    <form action="/enviar_personalizacao" method="POST">
-
+                    <form method="POST" action="{{ url_for('personalizar') }}" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
                         <h1 class="categoria"><strong>CAMISETA PERSONALIZADA</strong></h1><br><br>
-
-                        <label for="tipo_camiseta">Tipo de Camiseta:</label>
-                        <input type="text" id="tipo_camiseta" name="tipo_camiseta" readonly><br><br>
-
-                        <label for="tamanho">Tamanho:</label>
-                        <select name="tamanho" id="tamanho">
-                            <option value="PP">PP</option>
-                            <option value="P">P</option>
-                            <option value="M">M</option>
-                            <option value="G">G</option>
-                            <option value="XG">XG</option>
-                            <option value="XXG">XXG</option>
-                        </select><br><br>
-
-                        <label for="quantidade">Quantidade:</label>
-                        <input type="number" id="quantidade" name="quantidade" min="1" required><br><br>
-
-
-                        <label for="cor">Cor:</label>
-                        <div class="seletor-cor">
-                            <br>
-                            <button class="cor" style="background-color: #ff0000;" value="#ff0000" onclick="selecionarCor(this)"></button>
-                            <button class="cor" style="background-color: #00ff00;" value="#00ff00" onclick="selecionarCor(this)"></button>
-                            <button class="cor" style="background-color: #0000ff;" value="#0000ff" onclick="selecionarCor(this)"></button>
-                            <!-- Adicione mais botões de cores conforme necessário -->
+                        <div class="selecao">
+                            {{ form.categoria.label }}
+                            {{ form.categoria(onchange="selecionarCamiseta(this.value)") }}
                         </div>
-                        <input type="hidden" id="corEscolhida" name="cor" required><br><br>
+                        {{ form.foto.label }}<br>
+                        {{ form.foto }}<br><br>
 
-                        <label for="especificacao">Especificação:</label>
-                        <input type="text" id="especificacao" name="especificacao" required><br><br>
+                        {{ form.tamanho.label }}<br>
+                        {{ form.tamanho }}<br><br>
 
-                        <button class="botao" type="submit"> <strong> PERSONALIZAR </strong></button>
-                    </form>
+                        {{ form.quantidade.label }}<br>
+                        {{ form.quantidade }}<br><br>
+                        <label for="cor">Cor:</label><br>
+                        <div class="seletor-cor">
+                            {% for color, label in cores %}
+                                <button type="button" class="cor {{ label | lower }}" value="{{ color }}" onclick="selecionarCor(this)"></button>
+                            {% endfor %}
+                        </div>
+                        {{ form.cor }}<br><br>              
+
+                        {{ form.tecido.label }}<br>
+                        {{ form.tecido }}<br><br>
+
+                        {{ form.texto_camisa.label }}<br>
+                        {{ form.texto_camisa }}<br><br>
+
+                        {{ form.observacao.label }}<br>
+                        {{ form.observacao(cols=30, rows=5) }}<br><br>
+                        {{ form.botao_confirmacao(class_="botao") }}
+                        
+                </form>
+                
                 </div>
             </div>
+            
         </div>
     </div>
+    
 </section>
 
 <script>
-    function selecionarCamiseta(tipo) {
-        var imagemGrande = document.getElementById('imagem-grande');
-        var tipoCamisetaInput = document.getElementById('tipo_camiseta');
-        tipoCamisetaInput.value = tipo;
-        if (tipo === "personalizada") {
-            imagemGrande.src = "{{ url_for('static', filename='images/categorias/personalizada.jpeg') }}";
-        } else {
-            imagemGrande.src = "{{ url_for('static', filename='images/categorias/') }}" + tipo + ".jpeg";
-        }
-        imagemGrande.style.width = "200px";
-        imagemGrande.style.height = "auto";
+function selecionarCamiseta(tipo) {
+    var imagemGrande = document.getElementById('imagem-grande');
+    if (tipo === "personalizada") {
+        imagemGrande.src = "{{ url_for('static', filename='images/categorias/personalizada.jpeg') }}";
+    } else {
+        imagemGrande.src = "{{ url_for('static', filename='images/categorias/') }}" + tipo + ".jpeg";
     }
+}
 
-    function selecionarCor(botao) {
+function selecionarCor(botao) {
     var corSelecionada = botao.value;
-    document.getElementById("corEscolhida").value = corSelecionada;
+    document.getElementById("cor").value = corSelecionada;
     var botoesCor = document.querySelectorAll(".cor");
     botoesCor.forEach(function(botao) {
         botao.classList.remove("selecionado");
     });
     botao.classList.add("selecionado");
 }
-
 </script>
+</main>
 {% endblock %}

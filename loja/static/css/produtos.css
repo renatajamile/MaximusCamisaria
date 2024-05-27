@@ -27,7 +27,7 @@
 
 .produtos .box-container .box .categoria{
     text-align: center; 
-    color: #00008B;
+    color: var(--azulclaro);
 }
 
 .produtos .box-container .box:hover{
@@ -50,7 +50,7 @@
     width: 20rem;
     height: 5rem;
     border: none;
-    font-family: 'Sarala', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 15px;
     color: white;
     border-radius: 20px;
