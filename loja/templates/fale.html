@@ -5,15 +5,18 @@
 {% endblock %}
 <body>
 
-{% block main %}
+{% block main1 %}
 <main> 
     <h1>Fale Conosco</h1>
-    <p>Olá, <strong>{{ usuario }}</strong>! Como podemos ajudar você?</p>
-    <h1>Aqui ficará o formulario de fale conosco</h1>
-</main>
+    <p>Olá, <strong>{{current_user.username}}</strong>! Como podemos ajudar você?</p>
 
 {% endblock %}
 
-</body>
-
+{% block main2 %}
+    <h1>Aqui ficará o formulario de fale conosco</h1>
+    </main>
+    
+{% endblock %}
+    
+    </body>
 
