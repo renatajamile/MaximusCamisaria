@@ -29,8 +29,8 @@
 
 .voltar button {
     padding: 2px;
-    background-color: var(--azulEscuro);
-    width: 5rem;
+    background-color: var(--azulClaro);
+    width: 8.5rem;
     height: 2rem;
     border: none;
     font-size: 16px;
@@ -40,7 +40,7 @@
 }
 
 .voltar button:hover {
-    background-color: var(--azulClaro);
+    background-color: #211f20;
 }
 
 /*main*/
@@ -52,7 +52,6 @@
     margin-bottom: 48px;
     gap: 300px;
 }
-
 .login-container {
     padding: 20px;
     background-color: #ffffff;
@@ -63,14 +62,14 @@
 }
 
 .login-container h2 {
-    color: var(--azulEscuro);
+    color:var(--azulClaro);
     font-size: 46px;
     text-align: center;
     margin-bottom: 36px;
 }
-
+  
 .form-group {
-    color: var(--azulEscuro);
+    color: #211f20;
     margin-bottom: 15px;
 }
 
@@ -81,6 +80,7 @@
 .form-input {
     background-color: #f6f6f6;
     width: 150%;
+    font-weight: bold;
     padding: 10px;
     border-radius: 30px;
 }
@@ -88,14 +88,16 @@
 .form-button {
     width: 150%;
     padding: 10px;
-    background-color: var(--azulEscuro);
+    background-color: var(--azulClaro);
     color: #ffffff;
     border-radius: 30px;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .form-button:hover {
-    background-color: var(--azulClaro);
+    background-color: #211f20;
 }
 
 p {
@@ -114,10 +116,26 @@ p {
 
 h4 {
     font-size: 23px;
-    color: var(--azulEscuro);
+    color: var(--azulClaro);
     margin-bottom: 12px;
 }
 
 h5 {
     font-size: 20px;
+}
+
+.login-link {
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-link a {
+    color: var(--azulclaro);
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
 }

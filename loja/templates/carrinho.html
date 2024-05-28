@@ -5,11 +5,15 @@
 {% endblock %}
 <body>
 
-{% block main %}
+{% block main1 %}
 <main> 
     <h1> Minha Conta </h1>
-    <p>Olá, <strong>{{ usuario }}</strong>! Este é o seu espaço. Acesse seu perfil e acompanhe seus pedidos aqui</p>
-    <h1>Aqui ficará o espaço do cliente acompanhar os pedidos e o seu perfil</h1>
+    <p>Olá, <strong>{{current_user.username}}</strong>! Este é o seu espaço. Acesse seu perfil e acompanhe seus pedidos aqui</p>
+ 
+{% endblock %}
+
+{% block main2 %}
+<h1>Aqui ficará o espaço do cliente acompanhar os pedidos e o seu perfil</h1>
 </main>
 
 {% endblock %}

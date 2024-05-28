@@ -11,50 +11,160 @@
 <body>
     {% block header %}
     <header>
-        <a href="/" > <img class="logo" src= "{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
-
+        <a href="/"> <img class="logo" src="{{ url_for('static', filename='images/logoPNG.png') }}" alt="Logo"></a>
         <nav class="navbar">
             <a href="/">início</a>
             <a href="/produtos">produtos</a>
-            <a href="/cadastro"><button class= "botao1" type="button">  <strong> CADASTRE-SE </strong></button></a>
-            <a href="/login"><button class= "botao1" type="button">  <strong> LOGIN </strong></button></a>
+            <a href="/cadastro"><button class="botao1" type="button"><strong> CADASTRE-SE </strong></button></a>
+            <a href="/login"><button class="botao1" type="button"><strong> LOGIN </strong></button></a>
         </nav>
-
     </header>
     {% endblock %}
 
-    {% block main %}
-        <main> <h1>Bem-vindo!</h1>
-                {% if current_user.is_authenticated %}
-                <a href="{{ url_for('perfil', usuario=current_user.username) }}">Ir para o Perfil</a>
-                {% else %}
-                <p>Por favor, <a href="{{ url_for('login') }}">faça login</a> ou <a href="{{ url_for('criarconta') }}">crie uma conta</a>.</p>
-                {% endif %}
-            
-                <h1>Aqui ficará o conteúdo da Página Principal</h1>
-        </main>
-
+    {% block main1 %}
+    <main>
+        <div class=Subtitulo-base>
+            <h1 class=subtitulo>Bem vindo a Maximus Camisaria!</h1>
+          </div>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('perfil', id_usuario=current_user.id) }}">Ir para o Perfil</a>
+        
+        {% else %}
+        <p class="texto">Por favor, <a href="{{ url_for('login') }}">faça login</a> ou <a href="{{ url_for('criarconta') }}">crie uma conta</a>.</p>    
+        {% endif %}
     {% endblock %}
 
-    {% block footer %}
-<footer class="rodape">
-    <div>
-        <div class="redes-container">
-            <h3 class="titulo-rodape"> ENTRE EM CONTATO: </h3>
-            <a href="https://www.instagram.com/">
-                <img class="redes-sociais" src="{{ url_for('static', filename='images/rodape/insta.webp') }}" alt="Instagram">
-                <span class="texto-redes-sociais">maximuscamisariaoficial</span>
-            </a>
-            <br>
-            <a href="https://web.whatsapp.com/">
-                <img class="redes-sociais" src="{{ url_for('static', filename='images/rodape/whatsapp.png') }}" alt="WhatsApp">
-                <span class="texto-redes-sociais">(38) 9914-0566</span>
-            </a>
+    {% block main2 %}
+        <div>
+            <img class="topo" src="/static/images/homepage/lbaner.jpg "alt="Banner da Maximus Camisaria">            
+        <div class="sobre">
+            <h1 class="subtitulo">Sobre a nossa loja</h1>
+            <p class="texto">"A Maximus Camisaria foi fundada em 16 de agosto de 2011 e atua no ramo de confecção, na cidade de Unaí e região, especificamente voltada para o segmento de uniformes escolares, uniformes empresariais, camisetas para eventos, datas comemorativas, entre outros. São 16 (dezesseis) funcionários empenhados em entregar o melhor produto da região."</p>
         </div>
-    </div>
-    <a href="/"> <img class="logo-rodape" src="{{ url_for('static', filename='images/rodape/logoRodapé.jpeg') }}" alt="imagem"> </a>
-</footer>
-{% endblock %}
-
+        <div class="carousel-container">
+            <div class="carousel">
+              <ul class="slides">
+                <input type="radio" name="radio-buttons" id="img-1" checked />
+                <li class="slide-container">
+                  <div class="slide-image">
+                    <img src="/static/images/homepage/1.jpg">
+                  </div>
+                  <div class="carousel-controls">
+                    <label for="img-3" class="prev-slide">
+                      <span>&lsaquo;</span>
+                    </label>
+                    <label for="img-2" class="next-slide">
+                      <span>&rsaquo;</span>
+                    </label>
+                  </div>
+                </li>
+                <input type="radio" name="radio-buttons" id="img-2" />
+                <li class="slide-container">
+                  <div class="slide-image">
+                    <img src="/static/images/homepage/4.jpg">
+                  </div>
+                  <div class="carousel-controls">
+                    <label for="img-1" class="prev-slide">
+                      <span>&lsaquo;</span>
+                    </label>
+                    <label for="img-3" class="next-slide">
+                      <span>&rsaquo;</span>
+                    </label>
+                  </div>
+                </li>
+                <input type="radio" name="radio-buttons" id="img-3" />
+                <li class="slide-container">
+                  <div class="slide-image">
+                    <img src="/static/images/homepage/3.jpg">
+                  </div>
+                  <div class="carousel-controls">
+                    <label for="img-2" class="prev-slide">
+                      <span>&lsaquo;</span>
+                    </label>
+                    <label for="img-1" class="next-slide">
+                      <span>&rsaquo;</span>
+                    </label>
+                  </div>
+                </li>
+                <div class="carousel-dots">
+                  <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+                  <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+                  <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+                </div>
+              </ul>
+            </div>
+          </div>
+        <h1 class="subtitulo">Feedbacks dos nossos clientes</h1>
+        <section class="cards">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/homepage/perfil1.jpg') }}" alt="Ana Clara" class="user">
+                <h3>Ana Clara</h3>
+                <div class="stars">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                </div>
+                <p class="texto-maior"> Eu amei muito as peças, eu fiz um pedido de umas 10 blusas para meu grupo da faculdade e vieram em perfeito estado, nota 10.</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/homepage/perfil2.jpg') }}" alt="Katherine" class="user">
+                <h3>Katherine</h3>
+                <div class="stars">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                </div>
+                <p class="texto-maior"> Comprei algumas peças para o conjunto da minha igreja e ficou muito bom, peças de boa qualidade, eu amei muito.</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/homepage/perfil3.jpg') }}" alt="Henrique" class="user">
+                <h3>Henrique</h3>
+                <div class="stars">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                </div>
+                <p class="texto-maior"> Fiz um pedido de 14 blusas para meu time de futebol da faculdade e vieram do jeito que nós queríamos, o pano é muito bom.</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/homepage/perfil4.jpg') }}" alt="Lucas" class="user">
+                <h3>Lucas</h3>
+                <div class="stars">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                    <img src="{{ url_for('static', filename='images/homepage/star.svg') }}" alt="Star" class="star">
+                </div>
+                <p class="texto-maior"> Achei muito boa as peças, comprei para minha turma do curso técnico e ficaram muito boas, comprarei mais vezes.</p>
+            </div>
+        </section>
+    </main>
+    {% endblock %}
+    {% block footer %}
+    <footer class="rodape">
+        <div>
+            <div class="redes-container">
+                <h3 class="titulo-rodape"> ENTRE EM CONTATO: </h3>
+                <a href="https://www.instagram.com/">
+                    <img class="redes-sociais" src="{{ url_for('static', filename='images/rodape/insta.webp') }}" alt="Instagram">
+                    <span class="texto-redes-sociais">maximuscamisariaoficial</span>
+                </a>
+                <br>
+                <a href="https://web.whatsapp.com/">
+                    <img class="redes-sociais" src="{{ url_for('static', filename='images/rodape/whatsapp.png') }}" alt="WhatsApp">
+                    <span class="texto-redes-sociais">(38) 9914-0566</span>
+                </a>
+            </div>
+        </div>
+        <a href="/"><img class="logo-rodape" src="{{ url_for('static', filename='images/rodape/logoRodapé.jpeg') }}" alt="Imagem"></a>
+    </footer>
+    {% endblock %}
 </body>
 </html>
