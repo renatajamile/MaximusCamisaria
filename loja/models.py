@@ -33,3 +33,4 @@ class Personalizada(database.Model):
     texto_camisa = database.Column(database.String, nullable=False)
     observacao = database.Column(database.String, nullable=False)
     id_usuario = database.Column(database.Integer, database.ForeignKey('usuario.id'), nullable=False)
+

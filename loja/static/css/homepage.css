@@ -114,7 +114,7 @@ header .navbar a:hover{
     margin-top: 2rem;
 }
 .botao:hover{
-    background-color:#041521;
+    background-color:var(--azulescuro);
 }
 
 .botao1{
@@ -130,7 +130,7 @@ header .navbar a:hover{
 }
 
 .botao1:hover{
-    background-color:#041521;
+    background-color:var(--azulescuro);
 }
 .botao2{
     background-color:var(--azulclaro) ;
@@ -144,11 +144,10 @@ header .navbar a:hover{
     margin-top: 2rem;
 }
 .botao2:hover{
-    background-color:#041521;
+    background-color:var(--azulescuro);
 }
 
 /* main*/
-
 .subtitulo { 
     padding: 5px;
     font-family: "Quicksand", sans-serif;

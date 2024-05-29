@@ -1,0 +1,22 @@
+{% extends "perfil.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+{% endblock %}
+<body>
+
+{% block main1 %}
+<main> 
+    <div class=Subtitulo-base>
+    <h1 class="subtitulo">  Minha Conta </h1>
+    <h1 class="texto"> Olá, <strong>{{current_user.username}}</strong>! Este é o seu espaço. Acesse seu perfil e acompanhe seus pedidos aqui</h1>
+</div>
+{% endblock %}
+
+{% block main2 %}
+<h1>Aqui ficará o espaço do cliente acompanhar os pedidos e o seu perfil</h1>
+
+</main>
+{% endblock %}
+
+</body>
