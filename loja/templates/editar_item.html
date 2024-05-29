@@ -1,0 +1,18 @@
+{% extends "homepage.html" %}
+
+{% block main %}
+<main>
+    <h1>Editar Item</h1>
+    <form method="POST" action="{{ url_for('editar_item', id=item.id) }}" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.categoria.label }} {{ form.categoria(value=item.categoria) }}<br>
+        {{ form.foto.label }} {{ form.foto }}<br>
+        {{ form.tamanho.label }} {{ form.tamanho(value=item.tamanho) }}<br>
+        {{ form.quantidade.label }} {{ form.quantidade(value=item.quantidade) }}<br>
+        {{ form.tecido.label }} {{ form.tecido(value=item.tecido) }}<br>
+        {{ form.texto_camisa.label }} {{ form.texto_camisa(value=item.texto_camisa) }}<br>
+        {{ form.observacao.label }} {{ form.observacao(value=item.observacao) }}<br>
+        {{ form.botao_confirmacao(class_="botao") }}
+    </form>
+</main>
+{% endblock %}

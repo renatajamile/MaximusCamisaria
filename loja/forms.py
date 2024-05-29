@@ -51,4 +51,5 @@ class FormPersonalizada(FlaskForm):
     cor = HiddenField('Cor', validators=[DataRequired()])
     texto_camisa = StringField('Texto na Camisa', validators=[DataRequired()])
     observacao = TextAreaField('Observações')
-    botao_confirmacao = SubmitField('SOLICITAR ORÇAMENTO')
+    botao_confirmacao = SubmitField('ADICIONAR AO CARRINHO')
+

@@ -1,10 +1,12 @@
 # criar as rotas do site (os links)
+import os
+import uuid
+from datetime import datetime
 from flask import render_template, url_for, redirect, request, flash
 from loja import app, database, bcrypt, allowed_file
 from loja.models import Usuario, Personalizada
 from flask_login import login_required, login_user, logout_user, current_user
 from werkzeug.utils import secure_filename
-import os
 from loja.forms import FormLogin, FormCriarConta, FormPersonalizada
 
 @app.route("/")
@@ -57,27 +59,43 @@ def perfil(id_usuario):
 @login_required
 def personalizar():
     form = FormPersonalizada()
-    cores = [
-        ('#ff0000', 'Vermelho'),
-        ('#0000ff', 'Azul'),
-        ('#00ff00', 'Verde'),
-        ('#000000', 'Preto'),
-        ('#ffffff', 'Branco')
-    ]
     if form.validate_on_submit():
         if 'foto' not in request.files:
             flash('Nenhum arquivo foi enviado.')
             return redirect(request.url)
+        
         file = request.files['foto']
         if file.filename == '':
             flash('Nenhum arquivo selecionado.')
             return redirect(request.url)
+        
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # Continue com o processamento do formulário
-        return redirect(url_for('solicitar_orcamento'))
-    return render_template('personalizar.html', usuario=current_user, form=form, cores=cores)
+            file_ext = filename.rsplit('.', 1)[1].lower()  # Obter a extensão do arquivo
+            unique_filename = f"{uuid.uuid4().hex}_{datetime.now().strftime('%Y%m%d%H%M%S')}.{file_ext}"
+            upload_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
+            
+            file.save(upload_path)
+            cor_selecionada = request.form['cor']
+            
+            nova_personalizada = Personalizada(
+                foto=unique_filename,
+                categoria=form.categoria.data,
+                cor=cor_selecionada,
+                tamanho=form.tamanho.data,
+                quantidade=form.quantidade.data,
+                tecido=form.tecido.data,
+                texto_camisa=form.texto_camisa.data,
+                observacao=form.observacao.data,
+                id_usuario=current_user.id
+            )
+            
+            database.session.add(nova_personalizada)
+            database.session.commit()
+            
+            return redirect(url_for('carrinho'))
+    
+    return render_template('personalizar.html', usuario=current_user, form=form)
 
 @app.route('/solicitar_orcamento', methods=['GET', 'POST'])
 def solicitar_orcamento():
@@ -92,11 +110,69 @@ def produtos():
 @login_required
 def fale():
     return render_template("fale.html", usuario=current_user)
+
+@app.route("/minhaconta")
+@login_required
+def minhaconta():
+    return render_template ("minhaconta.html", usuario=current_user)
+
 @app.route("/carrinho")
 @login_required
 def carrinho():
-    return render_template ("carrinho.html", usuario=current_user)
+    return render_template ("carrinho.html")
 
+@app.route("/carrinho")
+@login_required
+def visualizar_carrinho():
+    # Consulta todos os itens personalizados do usuário atual
+    itens_personalizados = Personalizada.query.filter_by(id_usuario=current_user.id).all()
+    return render_template('carrinho.html', itens_personalizados=itens_personalizados)
+
+@app.route("/deletar_item/<int:id>")
+@login_required
+def deletar_item(id):
+    item = Personalizada.query.get_or_404(id)
+    if item.id_usuario != current_user.id:
+        abort(403)  # Proibir acesso se o item não pertencer ao usuário atual
+
+    database.session.delete(item)
+    database.session.commit()
+    flash('Item deletado com sucesso.')
+    return redirect(url_for('visualizar_carrinho'))
+
+@app.route("/editar_item/<int:id>", methods=["GET", "POST"])
+@login_required
+def editar_item(id):
+    item = Personalizada.query.get_or_404(id)
+    if item.id_usuario != current_user.id:
+        abort(403)
+
+    form = FormPersonalizada(obj=item)
+    if form.validate_on_submit():
+        if 'foto' in request.files:
+            file = request.files['foto']
+            if file.filename != '' and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file_ext = filename.rsplit('.', 1)[1].lower()
+                unique_filename = f"{uuid.uuid4().hex}_{datetime.now().strftime('%Y%m%d%H%M%S')}.{file_ext}"
+                upload_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
+                file.save(upload_path)
+                item.foto = unique_filename
+        
+        item.categoria = form.categoria.data
+        item.cor = request.form['cor']
+        item.tamanho = form.tamanho.data
+        item.quantidade = form.quantidade.data
+        item.tecido = form.tecido.data
+        item.texto_camisa = form.texto_camisa.data
+        item.observacao = form.observacao.data
+        
+        database.session.commit()
+        flash('Item atualizado com sucesso.')
+        return redirect(url_for('visualizar_carrinho'))
+    
+    return render_template('editar_item.html', form=form, item=item)
+    
 @app.route("/logout")
 @login_required
 def logout():

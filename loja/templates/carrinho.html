@@ -7,15 +7,51 @@
 
 {% block main1 %}
 <main> 
-    <h1> Minha Conta </h1>
-    <p>Olá, <strong>{{current_user.username}}</strong>! Este é o seu espaço. Acesse seu perfil e acompanhe seus pedidos aqui</p>
- 
+    <h1> Meu Carrinho </h1>
+    <p>Olá, <strong>{{current_user.username}}</strong>! Confira os itens adicionados ao carrinho:
 {% endblock %}
 
 {% block main2 %}
 <h1>Aqui ficará o espaço do cliente acompanhar os pedidos e o seu perfil</h1>
-</main>
+{% if itens_personalizados %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagem</th>
+                    <th>Categoria</th>
+                    <th>Cor</th>
+                    <th>Tamanho</th>
+                    <th>Quantidade</th>
+                    <th>Tecido</th>
+                    <th>Texto</th>
+                    <th>Observação</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in itens_personalizados %}
+                <tr>
+                    <td><img src="{{ url_for('static', filename='images/fotos_camisas/' + item.foto) }}" alt="Imagem da Camiseta" width="100"></td>
+                    <td>{{ item.categoria }}</td>
+                    <td>{{ item.cor }}</td>
+                    <td>{{ item.tamanho }}</td>
+                    <td>{{ item.quantidade }}</td>
+                    <td>{{ item.tecido }}</td>
+                    <td>{{ item.texto_camisa }}</td>
+                    <td>{{ item.observacao }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_item', id=item.id) }}">Editar</a>
+                        <a href="{{ url_for('deletar_item', id=item.id) }}" onclick="return confirm('Tem certeza que deseja deletar este item?');">Deletar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Seu carrinho está vazio!</p>
+    {% endif %}
 
+</main>
 {% endblock %}
 
 </body>
