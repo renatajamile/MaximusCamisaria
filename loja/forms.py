@@ -35,20 +35,18 @@ class FormCriarConta(FlaskForm):
             return ValidationError("CPF já cadastrado, faça login para continuar")
 
 class FormPersonalizada(FlaskForm):
-    foto = FileField('Foto', validators=[DataRequired()])
+    foto = FileField('Foto')
     categorias = [('personalizada', 'Personalizada'), ('tradicional', 'Tradicional'), ('raglan', 'Raglan'),
         ('esportiva', 'Esportiva'), ('uniforme', 'Escolar'), ('longa', 'Manga Longa'), 
         ('golaV', 'Gola V'), ('golapolo', 'Gola Polo'), ('oversized', 'Oversized')]
     tamanhos = [('pp', 'PP'), ('p', 'P'), ('m', 'M'), ('g', 'G'), ('gg', 'GG')]
     tecidos = [('algodao', 'Algodão'), ('piquet', 'Piquet'), ('dryfit', 'Dry Fit'), 
         ('pvantipiling', 'PV Antipiling')]
-    cores = [('#ff0000', 'Vermelho'), ('#0000ff', 'Azul'), ('#00ff00', 'Verde'), 
-        ('#000000', 'Preto'), ('#ffffff', 'Branco')]
     categoria = SelectField('Categoria', choices=categorias, validators=[DataRequired()])
     tamanho = SelectField('Tamanho', choices=tamanhos, validators=[DataRequired()])
     quantidade = IntegerField('Quantidade', validators=[DataRequired()])
     tecido = SelectField('Tecido', choices=tecidos, validators=[DataRequired()])
-    cor = HiddenField('Cor', validators=[DataRequired()])
+    cor = HiddenField('Cor')
     texto_camisa = StringField('Texto na Camisa', validators=[DataRequired()])
     observacao = TextAreaField('Observações')
     botao_confirmacao = SubmitField('ADICIONAR AO CARRINHO')
