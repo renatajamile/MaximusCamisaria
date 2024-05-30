@@ -60,40 +60,36 @@ def perfil(id_usuario):
 def personalizar():
     form = FormPersonalizada()
     if form.validate_on_submit():
-        if 'foto' not in request.files:
-            flash('Nenhum arquivo foi enviado.')
-            return redirect(request.url)
+        if form.foto.data:  # Verifica se foi enviado um arquivo de foto
+            file = form.foto.data
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file_ext = filename.rsplit('.', 1)[1].lower()  # Obter a extensão do arquivo
+                unique_filename = f"{uuid.uuid4().hex}_{datetime.now().strftime('%Y%m%d%H%M%S')}.{file_ext}"
+                upload_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
+                
+                file.save(upload_path)
+        else:  # Se não houver arquivo de foto, defina como vazio
+            unique_filename = ''
         
-        file = request.files['foto']
-        if file.filename == '':
-            flash('Nenhum arquivo selecionado.')
-            return redirect(request.url)
+        cor_selecionada = form.cor.data if form.cor.data else ''  # Verifica se a cor foi selecionada
         
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file_ext = filename.rsplit('.', 1)[1].lower()  # Obter a extensão do arquivo
-            unique_filename = f"{uuid.uuid4().hex}_{datetime.now().strftime('%Y%m%d%H%M%S')}.{file_ext}"
-            upload_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
-            
-            file.save(upload_path)
-            cor_selecionada = request.form['cor']
-            
-            nova_personalizada = Personalizada(
-                foto=unique_filename,
-                categoria=form.categoria.data,
-                cor=cor_selecionada,
-                tamanho=form.tamanho.data,
-                quantidade=form.quantidade.data,
-                tecido=form.tecido.data,
-                texto_camisa=form.texto_camisa.data,
-                observacao=form.observacao.data,
-                id_usuario=current_user.id
-            )
-            
-            database.session.add(nova_personalizada)
-            database.session.commit()
-            
-            return redirect(url_for('carrinho'))
+        nova_personalizada = Personalizada(
+            foto=unique_filename,
+            categoria=form.categoria.data,
+            cor=cor_selecionada,
+            tamanho=form.tamanho.data,
+            quantidade=form.quantidade.data,
+            tecido=form.tecido.data,
+            texto_camisa=form.texto_camisa.data,
+            observacao=form.observacao.data,
+            id_usuario=current_user.id
+        )
+        
+        database.session.add(nova_personalizada)
+        database.session.commit()
+        
+        return redirect(url_for('carrinho'))
     
     return render_template('personalizar.html', usuario=current_user, form=form)
 
@@ -119,7 +115,9 @@ def minhaconta():
 @app.route("/carrinho")
 @login_required
 def carrinho():
-    return render_template ("carrinho.html")
+    # Consulta todos os itens personalizados do usuário atual
+    itens_personalizados = Personalizada.query.filter_by(id_usuario=current_user.id).all()
+    return render_template("carrinho.html", itens_personalizados=itens_personalizados)
 
 @app.route("/carrinho")
 @login_required
@@ -134,6 +132,13 @@ def deletar_item(id):
     item = Personalizada.query.get_or_404(id)
     if item.id_usuario != current_user.id:
         abort(403)  # Proibir acesso se o item não pertencer ao usuário atual
+
+    # Excluir a imagem do sistema de arquivos
+    if item.foto != "default.png":
+        try:
+            os.remove(os.path.join(app.config['UPLOAD_FOLDER'], item.foto))
+        except Exception as e:
+            print(f"Erro ao excluir a imagem: {e}")
 
     database.session.delete(item)
     database.session.commit()
