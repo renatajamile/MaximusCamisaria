@@ -16,7 +16,8 @@
     <table>
         <thead>
             <tr>
-                <th>Imagem</th>
+                <th>Foto Categoria</th>
+                <th>Imagem Escolhida</th>
                 <th>Categoria</th>
                 <th>Cor</th>
                 <th>Tamanho</th>
@@ -31,8 +32,29 @@
             {% for item in itens_personalizados %}
             <tr>
                 <td>
+                    {% if item.categoria == 'tradicional' %}
+ 	                    <img src="{{ url_for('static', filename='images/categorias/tradicional.jpeg') }}" alt="Miniatura Tradicional" width="80">
+                    {% elif item.categoria == 'uniforme' %}
+	                    <img src="{{ url_for('static', filename='images/categorias/uniforme.jpeg') }}" alt="Miniatura Uniforme" width="80">
+                    {% elif item.categoria == 'esportiva' %}
+	                    <img src="{{ url_for('static', filename='images/categorias/esportiva.jpeg') }}" alt="Miniatura Esportiva" width="80">
+                    {% elif item.categoria == 'golapolo' %}
+                        <img src="{{ url_for('static', filename='images/categorias/golaPolo.jpeg') }}" alt="Miniatura Gola Polo" width="80">
+                    {% elif item.categoria == 'golaV' %}
+                        <img src="{{ url_for('static', filename='images/categorias/golaV.jpeg') }}" alt="Miniatura Gola V" width="80">
+                    {% elif item.categoria == 'longa' %}
+                        <img src="{{ url_for('static', filename='images/categorias/longa.jpeg') }}" alt="Miniatura Manga Longa" width="80">
+                    {% elif item.categoria == 'oversized' %}
+                        <img src="{{ url_for('static', filename='images/categorias/oversized.jpeg') }}" alt="Miniatura Oversized" width="80">
+                    {% elif item.categoria == 'personalizada' %}
+                        <img src="{{ url_for('static', filename='images/categorias/personalizada.jpeg') }}" alt="Miniatura Personalizada" width="80">
+                    {% elif item.categoria == 'raglan' %}
+                        <img src="{{ url_for('static', filename='images/categorias/raglan.jpeg') }}" alt="Miniatura Raglan" width="80">
+                    {% endif %}
+                </td>
+                <td>
                     {% if item.foto %}
-                        <img src="{{ url_for('static', filename='images/fotos_camisas/' + item.foto) }}" alt="Imagem da Camiseta" width="100">
+                        <img src="{{ url_for('static', filename='images/fotos_camisas/' + item.foto) }}" alt="Imagem da Camiseta" width="80">
                     {% endif %}
                 </td>
                 <td>{{ item.categoria }}</td>
@@ -50,6 +72,9 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="voltar">
+        <a href="{{ url_for('minhaconta') }}"><button class="botao1" type="button"><strong>VOLTAR</strong></button></a>
+    </div>
 {% else %}
     <p>Seu carrinho está vazio!</p>
 {% endif %}
