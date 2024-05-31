@@ -93,11 +93,6 @@ def personalizar():
     
     return render_template('personalizar.html', usuario=current_user, form=form)
 
-@app.route('/solicitar_orcamento', methods=['GET', 'POST'])
-def solicitar_orcamento():
-    # Lógica para solicitar orçamento
-    return "Orçamento solicitado!"
-
 @app.route("/produtos")
 def produtos():
     return render_template ("produtos.html")
@@ -144,40 +139,47 @@ def deletar_item(id):
     database.session.commit()
     flash('Item deletado com sucesso.')
     return redirect(url_for('visualizar_carrinho'))
-
 @app.route("/editar_item/<int:id>", methods=["GET", "POST"])
 @login_required
 def editar_item(id):
     item = Personalizada.query.get_or_404(id)
-    if item.id_usuario != current_user.id:
-        abort(403)
+    form = FormPersonalizada()
 
-    form = FormPersonalizada(obj=item)
     if form.validate_on_submit():
-        if 'foto' in request.files:
-            file = request.files['foto']
-            if file.filename != '' and allowed_file(file.filename):
+        if form.foto.data:  # Verifica se foi enviado um arquivo de foto
+            file = form.foto.data
+            if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                file_ext = filename.rsplit('.', 1)[1].lower()
+                file_ext = filename.rsplit('.', 1)[1].lower()  # Obter a extensão do arquivo
                 unique_filename = f"{uuid.uuid4().hex}_{datetime.now().strftime('%Y%m%d%H%M%S')}.{file_ext}"
                 upload_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
                 file.save(upload_path)
                 item.foto = unique_filename
-        
+        elif "remove_foto" in request.form:
+            item.foto = None
+
         item.categoria = form.categoria.data
-        item.cor = request.form['cor']
+        item.cor = form.cor.data  # Atualiza a cor do item
         item.tamanho = form.tamanho.data
         item.quantidade = form.quantidade.data
         item.tecido = form.tecido.data
         item.texto_camisa = form.texto_camisa.data
         item.observacao = form.observacao.data
-        
+
         database.session.commit()
-        flash('Item atualizado com sucesso.')
-        return redirect(url_for('visualizar_carrinho'))
-    
+        return redirect(url_for('carrinho'))
+
+    # Preencher o formulário com os valores atuais do item
+    form.categoria.data = item.categoria
+    form.cor.data = item.cor
+    form.tamanho.data = item.tamanho
+    form.quantidade.data = item.quantidade
+    form.tecido.data = item.tecido
+    form.texto_camisa.data = item.texto_camisa
+    form.observacao.data = item.observacao
+
     return render_template('editar_item.html', form=form, item=item)
-    
+
 @app.route("/logout")
 @login_required
 def logout():
