@@ -29,6 +29,11 @@ def login():
 def criarconta():
     form_criarconta = FormCriarConta()
     if form_criarconta.validate_on_submit():
+        # Verificar se o CPF já existe
+        if Usuario.query.filter_by(cpf=form_criarconta.cpf.data).first():
+            flash('O CPF informado já está cadastrado. Por favor, tente outro CPF.', 'error')
+            return render_template("cadastro.html", form=form_criarconta)
+        
         senha = bcrypt.generate_password_hash(form_criarconta.senha.data).decode('utf-8')
         usuario = Usuario(
             username=form_criarconta.username.data,
