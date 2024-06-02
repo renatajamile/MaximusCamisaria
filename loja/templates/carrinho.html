@@ -7,28 +7,34 @@
 
 {% block main1 %}
 <main> 
-    <h1> Meu Carrinho </h1>
-    <p>Olá, <strong>{{current_user.username}}</strong>! Confira os itens adicionados ao carrinho:
+    <div class=Subtitulo-base>
+    <h1 class="subtitulo"> Meu Carrinho </h1>
+    </div>
+    <h1 class="texto"> Olá, <strong>{{current_user.username}}</strong>! Confira os itens adicionados ao carrinho:  </h1>
+    
 {% endblock %}
 
 {% block main2 %}
+
+<br></br>
 {% if itens_personalizados %}
+<div class="carrinho-container">
     <table>
         <thead>
             <tr>
-                <th>Foto Categoria</th>
-                <th>Imagem Escolhida</th>
-                <th>Categoria</th>
-                <th>Cor</th>
-                <th>Tamanho</th>
-                <th>Quantidade</th>
-                <th>Tecido</th>
-                <th>Texto</th>
-                <th>Observação</th>
-                <th>Ações</th>
+                <th style="color: #0098db; font-weight: bold;">Foto Categoria</th>
+                <th style="color: #0098db; font-weight: bold;">Imagem Escolhida</th>
+                <th style="color: #0098db; font-weight: bold;">Categoria</th>
+                <th style="color: #0098db; font-weight: bold;">Cor</th>
+                <th style="color: #0098db; font-weight: bold;">Tamanho</th>
+                <th style="color: #0098db; font-weight: bold;">Quantidade</th>
+                <th style="color: #0098db; font-weight: bold;">Tecido</th>
+                <th style="color: #0098db; font-weight: bold;">Texto</th>
+                <th style="color: #0098db; font-weight: bold;">Observação</th>
+                <th style="color: #0098db; font-weight: bold;">Ações</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> 
             {% for item in itens_personalizados %}
             <tr>
                 <td>
@@ -57,21 +63,24 @@
                         <img src="{{ url_for('static', filename='images/fotos_camisas/' + item.foto) }}" alt="Imagem da Camiseta" width="80">
                     {% endif %}
                 </td>
-                <td>{{ item.categoria }}</td>
-                <td>{{ item.cor }}</td>
-                <td>{{ item.tamanho }}</td>
-                <td>{{ item.quantidade }}</td>
-                <td>{{ item.tecido }}</td>
-                <td>{{ item.texto_camisa }}</td>
-                <td>{{ item.observacao }}</td>
+                <td style="font-size: 12px; font-weight: bold;">{{ item.categoria }}</td>
+                <td style="font-size: 12px; font-weight: bold;"><div class="color-circle" style="background-color: {{ item.cor }};"></div> 
+                {{ item.cor }}
+                </td>
+                <td style="font-size: 12px; font-weight: bold;">{{ item.tamanho }}</td>
+                <td style="font-size: 12px; font-weight: bold;">{{ item.quantidade }}</td>
+                <td style="font-size: 12px; font-weight: bold;">{{ item.tecido }}</td>
+                <td style="font-size: 12px; font-weight: bold;">{{ item.texto_camisa }}</td>
+                <td style="font-size: 12px; font-weight: bold;">{{ item.observacao }}</td>
                 <td>
-                    <a href="{{ url_for('editar_item', id=item.id) }}">Editar</a>
-                    <a href="{{ url_for('deletar_item', id=item.id) }}" onclick="return confirm('Tem certeza que deseja deletar este item?');">Deletar</a>
+                    <a href="{{ url_for('editar_item', id=item.id) }}" class="botao-editar"><strong>Editar</strong></a>
+                    <a href="{{ url_for('deletar_item', id=item.id) }}" class="botao-deletar" onclick="return confirm('Tem certeza que deseja deletar este item?');"><strong>Deletar</strong></a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
     <div class="voltar">
         <a href="{{ url_for('minhaconta') }}"><button class="botao1" type="button"><strong>VOLTAR</strong></button></a>
     </div>
