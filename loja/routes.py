@@ -9,6 +9,7 @@ from flask_login import login_required, login_user, logout_user, current_user
 from werkzeug.utils import secure_filename
 from loja.forms import FormLogin, FormCriarConta, FormPersonalizada, FormAtualizarConta
 
+
 @app.route("/")
 def homepage():
     if current_user.is_authenticated:
@@ -63,7 +64,6 @@ def criarconta():
             flash('Ocorreu um erro ao criar a conta. Por favor, tente novamente.', 'error')
 
     return render_template("cadastro.html", form=form_criarconta)
-
 
 #rota para visualizar os dados
 @app.route("/visualizarDados")
@@ -161,10 +161,12 @@ def produtos():
 def fale():
     return render_template("fale.html", usuario=current_user)
 
+# ROTA DA MINHA CONTA
 @app.route("/minhaconta")
 @login_required
 def minhaconta():
     return render_template ("minhaconta.html", usuario=current_user)
+
 
 @app.route("/carrinho")
 @login_required
@@ -172,13 +174,6 @@ def carrinho():
     # Consulta todos os itens personalizados do usuário atual
     itens_personalizados = Personalizada.query.filter_by(id_usuario=current_user.id).all()
     return render_template("carrinho.html", itens_personalizados=itens_personalizados)
-
-@app.route("/carrinho")
-@login_required
-def visualizar_carrinho():
-    # Consulta todos os itens personalizados do usuário atual
-    itens_personalizados = Personalizada.query.filter_by(id_usuario=current_user.id).all()
-    return render_template('carrinho.html', itens_personalizados=itens_personalizados)
 
 @app.route("/deletar_item/<int:id>")
 @login_required
@@ -197,7 +192,7 @@ def deletar_item(id):
     database.session.delete(item)
     database.session.commit()
     flash('Item deletado com sucesso.')
-    return redirect(url_for('visualizar_carrinho'))
+    return redirect(url_for('carrinho'))
 
 @app.route("/editar_item/<int:id>", methods=["GET", "POST"])
 @login_required
