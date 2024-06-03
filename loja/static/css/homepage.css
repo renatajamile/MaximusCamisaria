@@ -156,6 +156,7 @@ header .navbar a:hover{
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+
   
   .topo{
   width: 850px;
@@ -544,4 +545,95 @@ header .navbar a:hover{
     
     .logo img {
         width:150px; /* Tamanho da imagem da logo */
+    }
+
+/* EDITAR_USUARIO Estilos para o container DO EDITAR USUARIO  */
+ .editar-subtitulo-base {
+        margin-top: 20px; /* Reduz o espaçamento superior */
+    }
+
+ .editar-usuario-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px; /* Adiciona espaçamento interno */
+    }
+
+.editar-usuario-container form {
+        background-color: #ffffff;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px; /* Adiciona espaçamento interno */
+    }
+
+.editar-usuario-container label {
+        font-weight: bold;
+        color: #211f20;
+        width: calc(50% - 20px); /* Reduz a largura dos campos */
+    }
+
+.editar-usuario-container .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: #211f20;
+        width: calc(50% - 20px); /* Reduz a largura dos campos */
+        font-size: 15px;
+    }
+
+.editar-usuario-container .form-control {
+        background-color: #f6f6f6;
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        
+    }
+
+.botao1{
+    background-color:var(--azulclaro) ;
+    width: 15rem;
+    height: 4rem;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    color: white;
+    border-radius: 20px;
+    margin-top: 2rem;
+}
+
+.botao1:hover{
+    background-color:var(--azulescuro);
+}
+    /* EDITAR_USUARIO Estilos para o container DO EDITAR USUARIO  */
+    .editar-subtitulo-base {
+        margin-top: 20px; /* Reduz o espaçamento superior */
+    }
+
+/* VISUALIZAR */
+ .visualizar {
+        margin-top: 20px; /* Reduz o espaçamento superior */
+    }
+
+ .visualizar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px; /* Adiciona espaçamento interno */
+    }
+.visualizar .form-group {
+        flex-direction: column;
+        color: #211f20;
+        width: 100%; /* Reduz a largura dos campos */
+        font-size: 15px;
+    }
+    .visualizar label {
+        font-weight: bold;
+        color: #211f20;
+        width: 100%; /* Reduz a largura dos campos */
     }
