@@ -51,4 +51,15 @@ class FormPersonalizada(FlaskForm):
     observacao = TextAreaField('Observações')
     botao_confirmacao = SubmitField('ENVIAR')
     
-
+class FormAtualizarConta(FlaskForm):
+    username = StringField('Nome', validators=[DataRequired()])
+    userlastname = StringField('Sobrenome', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    cpf = StringField('CPF', validators=[DataRequired()])
+    endereco = StringField('Endereço', validators=[DataRequired()])
+    complemento = StringField('Complemento')
+    cidade = StringField('Cidade', validators=[DataRequired()])
+    uf = StringField('UF', validators=[DataRequired()])
+    cep = StringField('CEP', validators=[DataRequired()])
+    telefone = StringField('Telefone', validators=[DataRequired()])
+    submit = SubmitField('Salvar Alterações')

@@ -7,7 +7,7 @@ from loja import app, database, bcrypt, allowed_file
 from loja.models import Usuario, Personalizada
 from flask_login import login_required, login_user, logout_user, current_user
 from werkzeug.utils import secure_filename
-from loja.forms import FormLogin, FormCriarConta, FormPersonalizada
+from loja.forms import FormLogin, FormCriarConta, FormPersonalizada, FormAtualizarConta
 
 @app.route("/")
 def homepage():
@@ -29,11 +29,16 @@ def login():
 def criarconta():
     form_criarconta = FormCriarConta()
     if form_criarconta.validate_on_submit():
+        # Verificar se o email já existe
+        if Usuario.query.filter_by(email=form_criarconta.email.data).first():
+            flash('O e-mail informado já está cadastrado. Por favor, tente outro e-mail.', 'error')
+            return render_template("cadastro.html", form=form_criarconta)
+        
         # Verificar se o CPF já existe
         if Usuario.query.filter_by(cpf=form_criarconta.cpf.data).first():
             flash('O CPF informado já está cadastrado. Por favor, tente outro CPF.', 'error')
             return render_template("cadastro.html", form=form_criarconta)
-        
+
         senha = bcrypt.generate_password_hash(form_criarconta.senha.data).decode('utf-8')
         usuario = Usuario(
             username=form_criarconta.username.data,
@@ -48,11 +53,60 @@ def criarconta():
             cep=form_criarconta.cep.data,
             telefone=form_criarconta.telefone.data
         )
-        database.session.add(usuario)
-        database.session.commit()
-        login_user(usuario, remember=True)
-        return redirect(url_for("perfil", id_usuario=current_user.id))
+        try:
+            database.session.add(usuario)
+            database.session.commit()
+            login_user(usuario, remember=True)
+            return redirect(url_for("perfil", id_usuario=current_user.id))
+        except IntegrityError:
+            database.session.rollback()
+            flash('Ocorreu um erro ao criar a conta. Por favor, tente novamente.', 'error')
+
     return render_template("cadastro.html", form=form_criarconta)
+
+
+#rota para visualizar os dados
+@app.route("/visualizarDados")
+@login_required
+def visualizarDados():
+    return render_template("visualizar_dados.html", usuario=current_user.id)
+
+@app.route("/editar_usuario/<int:id_usuario>", methods=["GET", "POST"])
+@login_required
+def editar_usuario(id_usuario):
+    usuario = Usuario.query.get_or_404(id_usuario)
+    if usuario != current_user:
+        abort(403)  # Proibir acesso se o usuário não for o atual
+
+    form = FormAtualizarConta()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.userlastname = form.userlastname.data
+        current_user.email = form.email.data
+        current_user.cpf = form.cpf.data
+        current_user.endereco = form.endereco.data
+        current_user.complemento = form.complemento.data
+        current_user.cidade = form.cidade.data
+        current_user.uf = form.uf.data
+        current_user.cep = form.cep.data
+        current_user.telefone = form.telefone.data
+        database.session.commit()
+        flash("Conta atualizada com sucesso.", "success")
+        return redirect(url_for("visualizarDados"))
+
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.userlastname.data = current_user.userlastname
+        form.email.data = current_user.email
+        form.cpf.data = current_user.cpf
+        form.endereco.data = current_user.endereco
+        form.complemento.data = current_user.complemento
+        form.cidade.data = current_user.cidade
+        form.uf.data = current_user.uf
+        form.cep.data = current_user.cep
+        form.telefone.data = current_user.telefone
+
+    return render_template('editar_usuario.html', form=form)
 
 @app.route("/perfil/<id_usuario>")
 @login_required
@@ -144,6 +198,7 @@ def deletar_item(id):
     database.session.commit()
     flash('Item deletado com sucesso.')
     return redirect(url_for('visualizar_carrinho'))
+
 @app.route("/editar_item/<int:id>", methods=["GET", "POST"])
 @login_required
 def editar_item(id):
