@@ -637,3 +637,29 @@ header .navbar a:hover{
         color: #211f20;
         width: 100%; /* Reduz a largura dos campos */
     }
+/* FOTO PERFIL */
+.Subtitulo-base {
+    display: flex;
+    flex-direction: column;
+}
+
+.usuario-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.fotoperfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.perfil {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: flex;
+}
