@@ -1,0 +1,33 @@
+{% extends "carrinho.html" %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+{% endblock %}
+<body>
+{% block main1 %}
+<main> 
+    <div class="Subtitulo-base">
+        <h1 class="subtitulo"> Atualizar Foto de Perfil </h1>
+    </div>
+    
+{% endblock %}
+
+{% block main2 %}
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div>
+        <br>
+        {{ form.foto_perfil(class="form-control") }}
+    </div>
+    <div>
+        {{ form.botao_confirmacao(class="botao1") }}
+    </div>
+</form>
+
+<form method="POST" action="{{ url_for('excluir_foto_perfil') }}">
+    {{ form.hidden_tag() }}
+    <button type="submit" class="botao1">EXCLUIR FOTO DO PERFIL</button>
+</form>
+
+</main>
+{% endblock %}
+</body>

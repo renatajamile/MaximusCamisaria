@@ -10,7 +10,7 @@ class FormLogin(FlaskForm):
     botao_confirmacao = SubmitField("ENTRAR")
 
 class FormCriarConta(FlaskForm):
-    username = StringField ("Nome do usuário", validators=[DataRequired()])
+    username = StringField("Nome do usuário", validators=[DataRequired()])
     userlastname = StringField("Sobrenome do usuário", validators=[DataRequired()])
     email = StringField("E-mail", validators=[DataRequired(), Email()])
     senha = PasswordField("Senha", validators=[DataRequired(), Length(6, 20)])
@@ -27,12 +27,12 @@ class FormCriarConta(FlaskForm):
     def validate_email(self, email):
         usuario = Usuario.query.filter_by(email=email.data).first()
         if usuario:
-            return ValidationError("E-mail já cadastrado, faça login para continuar")
+            raise ValidationError("E-mail já cadastrado, faça login para continuar")
         
     def validate_cpf(self, cpf):
         usuario = Usuario.query.filter_by(cpf=cpf.data).first()
         if usuario:
-            return ValidationError("CPF já cadastrado, faça login para continuar")
+            raise ValidationError("CPF já cadastrado, faça login para continuar")
 
 class FormPersonalizada(FlaskForm):
     foto = FileField('Foto')
@@ -63,3 +63,7 @@ class FormAtualizarConta(FlaskForm):
     cep = StringField('CEP', validators=[DataRequired()])
     telefone = StringField('Telefone', validators=[DataRequired()])
     submit = SubmitField('Salvar Alterações')
+
+class FormAtualizarFotoPerfil(FlaskForm):
+    foto_perfil = FileField("Atualizar Foto de Perfil", validators=[DataRequired()])
+    botao_confirmacao = SubmitField("ATUALIZAR")

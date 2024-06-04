@@ -7,8 +7,7 @@ from loja import app, database, bcrypt, allowed_file
 from loja.models import Usuario, Personalizada
 from flask_login import login_required, login_user, logout_user, current_user
 from werkzeug.utils import secure_filename
-from loja.forms import FormLogin, FormCriarConta, FormPersonalizada, FormAtualizarConta
-
+from loja.forms import FormLogin, FormCriarConta, FormPersonalizada, FormAtualizarConta, FormAtualizarFotoPerfil
 
 @app.route("/")
 def homepage():
@@ -32,13 +31,13 @@ def criarconta():
     if form_criarconta.validate_on_submit():
         # Verificar se o email já existe
         if Usuario.query.filter_by(email=form_criarconta.email.data).first():
-            flash('O e-mail informado já está cadastrado. Por favor, tente outro e-mail.', 'error')
-            return render_template("cadastro.html", form=form_criarconta)
+            flash('O e-mail informado já está cadastrado. Por favor, tente outro e-mail.', 'danger')
+            return redirect(url_for('criarconta'))
         
         # Verificar se o CPF já existe
         if Usuario.query.filter_by(cpf=form_criarconta.cpf.data).first():
-            flash('O CPF informado já está cadastrado. Por favor, tente outro CPF.', 'error')
-            return render_template("cadastro.html", form=form_criarconta)
+            flash('O CPF informado já está cadastrado. Por favor, tente outro CPF.', 'danger')
+            return redirect(url_for('criarconta'))
 
         senha = bcrypt.generate_password_hash(form_criarconta.senha.data).decode('utf-8')
         usuario = Usuario(
@@ -58,12 +57,14 @@ def criarconta():
             database.session.add(usuario)
             database.session.commit()
             login_user(usuario, remember=True)
+            flash('Conta criada com sucesso!', 'success')
             return redirect(url_for("perfil", id_usuario=current_user.id))
         except IntegrityError:
             database.session.rollback()
-            flash('Ocorreu um erro ao criar a conta. Por favor, tente novamente.', 'error')
+            flash('Ocorreu um erro ao criar a conta. Por favor, tente novamente.', 'danger')
 
     return render_template("cadastro.html", form=form_criarconta)
+
 
 #rota para visualizar os dados
 @app.route("/visualizarDados")
@@ -165,8 +166,56 @@ def fale():
 @app.route("/minhaconta")
 @login_required
 def minhaconta():
-    return render_template ("minhaconta.html", usuario=current_user)
+    return render_template("minhaconta.html", usuario=current_user)
 
+@app.route("/atualizar_foto_perfil", methods=["GET", "POST"])
+@login_required
+def atualizar_foto_perfil():
+    form = FormAtualizarFotoPerfil()
+    if form.validate_on_submit():
+        if form.foto_perfil.data:
+            file = form.foto_perfil.data
+            if file and allowed_file(file.filename):
+                # Excluir a foto antiga se não for a padrão
+                if current_user.foto_perfil != 'default_profile.png':
+                    try:
+                        os.remove(os.path.join(app.config['PROFILE_PIC_UPLOAD_FOLDER'], current_user.foto_perfil))
+                    except Exception as e:
+                        print(f"Erro ao excluir a imagem antiga: {e}")
+
+                filename = secure_filename(file.filename)
+                file_ext = filename.rsplit('.', 1)[1].lower()
+                unique_filename = f"{uuid.uuid4().hex}_{datetime.now().strftime('%Y%m%d%H%M%S')}.{file_ext}"
+                upload_path = os.path.join(app.config['PROFILE_PIC_UPLOAD_FOLDER'], unique_filename)
+                file.save(upload_path)
+                current_user.foto_perfil = unique_filename
+
+                database.session.commit()
+                flash("Foto de perfil atualizada com sucesso.", "success")
+                return redirect(url_for("minhaconta", id_usuario=current_user.id))
+        else:
+            flash("Nenhum arquivo selecionado.", "danger")
+    return render_template("atualizar_foto_perfil.html", form=form)
+
+@app.route("/excluir_foto_perfil", methods=["POST"])
+@login_required
+def excluir_foto_perfil():
+    # Excluir a foto antiga se não for a padrão
+    if current_user.foto_perfil != 'default_profile.png':
+        try:
+            os.remove(os.path.join(app.config['PROFILE_PIC_UPLOAD_FOLDER'], current_user.foto_perfil))
+        except Exception as e:
+            print(f"Erro ao excluir a imagem antiga: {e}")
+    
+    current_user.foto_perfil = 'default_profile.png'
+    database.session.commit()
+    flash("Foto de perfil excluída com sucesso.", "success")
+    return redirect(url_for("minhaconta", id_usuario=current_user.id))
+
+@app.route('/profile/<filename>')
+def profile(filename):
+    file_url = url_for('static', filename=f'profile_pics/{filename}')
+    return render_template('minhaconta.html', file_url=file_url)
 
 @app.route("/carrinho")
 @login_required
