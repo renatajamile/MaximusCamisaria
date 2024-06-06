@@ -1,0 +1,66 @@
+{% extends "perfil.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+{% endblock %}
+
+<body>
+{% block main1 %}
+    <div class="Subtitulo-base">
+        <h1 class="subtitulo">Olá, {{ current_user.username }}!</h1>
+        <h1 class="texto">Editar os dados do meu perfil:</h1>
+    </div>
+{% endblock %}
+
+{% block main2 %}
+<div class="editar-usuario-container">
+    <form method="POST" action="{{ url_for('editar_usuario', id_usuario=current_user.id) }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="username">Nome:</label>
+            {{ form.username(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="userlastname">Sobrenome:</label>
+            {{ form.userlastname(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="cpf">CPF:</label>
+            {{ form.cpf(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="endereco">Endereço:</label>
+            {{ form.endereco(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="complemento">Complemento:</label>
+            {{ form.complemento(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="cidade">Cidade:</label>
+            {{ form.cidade(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="uf">UF:</label>
+            {{ form.uf(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="cep">CEP:</label>
+            {{ form.cep(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            {{ form.telefone(class="form-control") }}
+        </div>
+        <button type="submit" class="botao1"><strong>SALVAR ALTERAÇÕES</strong></button>
+        <a href="{{ url_for('visualizarDados') }}"><button class="botao1" type="button"><strong>VOLTAR</strong></button></a>
+    </form>
+</div>
+{% endblock %}
+</main>
+
+</body>

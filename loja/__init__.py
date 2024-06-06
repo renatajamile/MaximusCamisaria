@@ -7,7 +7,8 @@ from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///camisaria.db"
 app.config["SECRET_KEY"] = "7eaa37c9a383c66195bb5a9ac5bd49f8"
-app.config["UPLOAD_FOLDER"] = "static/images/fotos_camisas"
+app.config["UPLOAD_FOLDER"] = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/images/fotos_camisas/')
+app.config["PROFILE_PIC_UPLOAD_FOLDER"] = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/images/meuperfil/')
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # Limite de 16MB para uploads
 
 database = SQLAlchemy(app)

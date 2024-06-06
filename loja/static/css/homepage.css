@@ -12,8 +12,6 @@
     --logoescura: #211f20;
 }
 
-/**/
-
 *{
     margin: 0;
     padding: 0;
@@ -72,7 +70,7 @@ main {
     text-align: center; /* Centraliza o texto */
 }
 
-/* cabeçalho */
+/* FORMATAÇÃO cabeçalho */
 header{
     top: 0; left: 0; right: 0;
     background:var(--branco);
@@ -114,7 +112,7 @@ header .navbar a:hover{
     margin-top: 2rem;
 }
 .botao:hover{
-    background-color:#041521;
+    background-color:var(--azulescuro);
 }
 
 .botao1{
@@ -130,7 +128,7 @@ header .navbar a:hover{
 }
 
 .botao1:hover{
-    background-color:#041521;
+    background-color:var(--azulescuro);
 }
 .botao2{
     background-color:var(--azulclaro) ;
@@ -144,11 +142,10 @@ header .navbar a:hover{
     margin-top: 2rem;
 }
 .botao2:hover{
-    background-color:#041521;
+    background-color:var(--azulescuro);
 }
 
-/* main*/
-
+/* FORMATAÇÃO PAGINA INICIAL main*/
 .subtitulo { 
     padding: 5px;
     font-family: "Quicksand", sans-serif;
@@ -159,6 +156,7 @@ header .navbar a:hover{
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+
   
   .topo{
   width: 850px;
@@ -174,7 +172,7 @@ header .navbar a:hover{
     margin-top: 10px;
   }
   
-  /*texto*/
+  /*FORMATAÇÃO PAGINA INICIAL texto*/
   .texto{
     text-align: center;
     margin-top: 10px;
@@ -186,7 +184,7 @@ header .navbar a:hover{
       height: 700;
    }
 
-   /* Centralização e formatação da seção "Sobre" */
+   /* FORMATAÇÃO PAGINA INICIAL Centralização e formatação da seção "Sobre" */
 .sobre {
     display: flex;
     flex-direction: column;
@@ -213,7 +211,7 @@ header .navbar a:hover{
     margin-top: 1rem;
 }
   
-  /* carrossel */
+  /* CARROSSEL  */
   .carousel-container {
     display: flex;
     justify-content: center;
@@ -414,7 +412,7 @@ header .navbar a:hover{
       box-shadow: 6px 6px 10px rgba(0,0,0,0.171);
   }
 
-/* estilização rodapé*/
+/* RODAPÉ estilização rodapé*/
 
 .rodape {
     display: flex;
@@ -454,4 +452,214 @@ header .navbar a:hover{
 
 .redes-container a {
     text-decoration: none;
+}
+
+/* MEU CARRINHO  ESTILO CORES DA TABELA*/ 
+
+.color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #000;
+}
+.botao-editar {
+    background-color: var(--azulclaro);
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20px;
+    font-size: 10px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.botao-editar:hover {
+    background-color: #277410;
+}
+
+.botao-deletar {
+    background-color: var(--azulescuro);
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20px;
+    font-size: 10px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.botao-deletar:hover {
+    background-color: #da190b;
+}
+
+    /* MEU CARRINHO Estilos para a tabela */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* MEU CARRINHO Estilos para o container da tabela  */
+    .carrinho-container {
+        margin: 20px auto;
+        max-width: 800px; /* Defina a largura máxima desejada */
+    }
+
+/* Estilo Pagina minha conta*/
+    
+    .botoes-e-logo {
+        display: grid;
+        grid-template-columns: auto auto; /* Duas colunas, uma para a logo e outra para os botões */
+        grid-gap: 20px; /* Espaçamento entre os elementos */
+        align-items: center; /* Centraliza verticalmente */
+    }
+    
+    .botoes {
+        display: flex;
+        flex-direction: column; /* Botões empilhados verticalmente */
+    }
+    
+    .logo img {
+        width:150px; /* Tamanho da imagem da logo */
+    }
+
+/* EDITAR_USUARIO Estilos para o container DO EDITAR USUARIO  */
+ .editar-subtitulo-base {
+        margin-top: 20px; /* Reduz o espaçamento superior */
+    }
+
+ .editar-usuario-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px; /* Adiciona espaçamento interno */
+    }
+
+.editar-usuario-container form {
+        background-color: #ffffff;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px; /* Adiciona espaçamento interno */
+    }
+
+.editar-usuario-container label {
+        font-weight: bold;
+        color: #211f20;
+        width: calc(50% - 20px); /* Reduz a largura dos campos */
+    }
+
+.editar-usuario-container .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: #211f20;
+        width: calc(50% - 20px); /* Reduz a largura dos campos */
+        font-size: 15px;
+    }
+
+.editar-usuario-container .form-control {
+        background-color: #f6f6f6;
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        
+    }
+
+.botao1{
+    background-color:var(--azulclaro) ;
+    width: 15rem;
+    height: 4rem;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    color: white;
+    border-radius: 20px;
+    margin-top: 2rem;
+}
+
+.botao1:hover{
+    background-color:var(--azulescuro);
+}
+    /* EDITAR_USUARIO Estilos para o container DO EDITAR USUARIO  */
+    .editar-subtitulo-base {
+        margin-top: 20px; /* Reduz o espaçamento superior */
+    }
+
+/* VISUALIZAR */
+ .visualizar {
+        margin-top: 20px; /* Reduz o espaçamento superior */
+    }
+
+ .visualizar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px; /* Adiciona espaçamento interno */
+    }
+.visualizar .form-group {
+        flex-direction: column;
+        color: #211f20;
+        width: 100%; /* Reduz a largura dos campos */
+        font-size: 15px;
+    }
+    .visualizar label {
+        font-weight: bold;
+        color: #211f20;
+        width: 100%; /* Reduz a largura dos campos */
+    }
+/* FOTO PERFIL */
+.Subtitulo-base {
+    display: flex;
+    flex-direction: column;
+}
+
+.usuario-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.fotoperfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.perfil {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: flex;
 }

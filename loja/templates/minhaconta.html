@@ -1,0 +1,39 @@
+{% extends "perfil.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+{% endblock %}
+
+<body>
+
+{% block main1 %}
+<main> 
+    <div class="Subtitulo-base">
+        <h1 class="subtitulo">Minha Conta</h1>
+        <div>
+            <div class="fotoperfil">
+                <img class="perfil" 
+                     src="{{ url_for('static', filename='images/meuperfil/' ~ (usuario.foto_perfil if usuario.foto_perfil else 'default_profile.png')) }}" 
+                     alt="Foto de Perfil">
+            <a class="Subtitulo-base" href="{{ url_for('atualizar_foto_perfil') }}">Atualizar Foto de Perfil</a>
+            </div>       
+            <h1 class="texto">Olá, <strong>{{ current_user.username }}</strong>! Este é o seu espaço. Clique nos botões abaixo para acessar o que deseja:</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main2 %}
+    <div class="botoes-e-logo">
+        <div class="botoes">
+            <a href="{{ url_for('visualizarDados') }}"><button class="botao1"><strong>MEU PERFIL</strong></button></a>
+            <a href="{{ url_for('carrinho') }}"><button class="botao1"><strong>MEU CARRINHO</strong></button></a>
+            <a href="#"><button class="botao1"><strong>AVALIAÇÃO</strong></button></a>
+        </div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/homepage/camisas.jpg') }}" alt="camisas">
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+</body>

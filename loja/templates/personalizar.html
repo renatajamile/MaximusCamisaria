@@ -3,6 +3,7 @@
 {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/personalizar.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.6/jscolor.min.js"></script>
 {% endblock %}
 
 {% block header %}
@@ -13,7 +14,7 @@
         <a href="/produtos">produtos</a>
         <a href="/personalizar">personalizar</a>
         <a href="/fale">fale conosco</a>
-        <a href="/carrinho">minha conta</a>
+        <a href="/minhaconta">minha conta</a>
         <a href="{{ url_for('logout') }}"> <button class="botao1" type="button"> <strong> SAIR </strong></button></a>
     </nav>
 </header>
@@ -52,11 +53,10 @@
 
                         {{ form.quantidade.label }}<br>
                         {{ form.quantidade }}<br><br>
-                        <label for="cor">Cor:</label><br>
                         <div class="seletor-cor">
-                            {% for color, label in cores %}
-                                <button type="button" class="cor {{ label | lower }}" value="{{ color }}" onclick="selecionarCor(this)"></button>
-                            {% endfor %}
+                            <label for="cor">Cor:</label><br>
+                            <input class="jscolor {onFineChange:'updateColor(this)'}" id="cor-picker" value="#000000">
+                            <input type="hidden" id="cor" name="cor" value="#000000">
                         </div>
                         {{ form.cor }}<br><br>              
 
@@ -69,6 +69,7 @@
                         {{ form.observacao.label }}<br>
                         {{ form.observacao(cols=30, rows=5) }}<br><br>
                         {{ form.botao_confirmacao(class_="botao") }}
+    
                         
                 </form>
                 
@@ -81,24 +82,19 @@
 </section>
 
 <script>
-function selecionarCamiseta(tipo) {
-    var imagemGrande = document.getElementById('imagem-grande');
-    if (tipo === "personalizada") {
-        imagemGrande.src = "{{ url_for('static', filename='images/categorias/personalizada.jpeg') }}";
-    } else {
-        imagemGrande.src = "{{ url_for('static', filename='images/categorias/') }}" + tipo + ".jpeg";
+    function selecionarCamiseta(tipo) {
+        var imagemGrande = document.getElementById('imagem-grande');
+        if (tipo === "personalizada") {
+            imagemGrande.src = "{{ url_for('static', filename='images/categorias/personalizada.jpeg') }}";
+        } else {
+            imagemGrande.src = "{{ url_for('static', filename='images/categorias/') }}" + tipo + ".jpeg";
+        }
     }
-}
-
-function selecionarCor(botao) {
-    var corSelecionada = botao.value;
-    document.getElementById("cor").value = corSelecionada;
-    var botoesCor = document.querySelectorAll(".cor");
-    botoesCor.forEach(function(botao) {
-        botao.classList.remove("selecionado");
-    });
-    botao.classList.add("selecionado");
-}
-</script>
+    
+    function updateColor(picker) {
+        var corSelecionada = picker.toHEXString();
+        document.getElementById("cor").value = corSelecionada;
+    }
+    </script>
 </main>
 {% endblock %}

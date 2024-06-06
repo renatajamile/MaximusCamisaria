@@ -50,7 +50,7 @@
     font-size: 16px;
     color: var(--azulescuro);
     font-weight: bold;  /* Adiciona peso à fonte */
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     text-align: left; /* Alinha o texto à esquerda */
     width: 100%;
 }
@@ -107,27 +107,9 @@
     transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
 }
 
-.cor {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin: 5px;
-    border: 2px solid #fff;
-    cursor: pointer;
-}
-
-.cor.selecionado {
-    border-color: #000;
-}
-
-.cor:hover {
-    border-color: #000;
-}
-
-/* Classes específicas para cada cor */
-.vermelho { background-color: #ff0000; }
-.azul { background-color: #0000ff; }
-.verde { background-color: #00ff00; }
-.preto { background-color: #000000; }
-.branco { background-color: #ffffff; }
+  /*texto*/
+  .texto1{
+    text-align: left;
+    margin-top: 10px;
+    font-size: 15px
+  }

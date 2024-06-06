@@ -1,0 +1,59 @@
+{% extends "personalizar.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/personalizar.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.6/jscolor.min.js"></script>
+{% endblock %}
+
+{% block main1 %}
+<main>
+    <div class="Subtitulo-base">
+        <h1 class="subtitulo"> Olá, {{ current_user.username }}!</h1>
+        <h1 class="texto"> Edite os itens do seu carrinho: </h1>
+    </div>
+{% endblock %}
+
+{% block main2 %}
+<section class="personalizar">
+    <div class="boxContainer">
+        <div class="formulario">
+            <form method="POST" action="{{ url_for('editar_item', id=item.id) }}" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="selecao">
+                    {{ form.categoria.label }} {{ form.categoria(value=item.categoria) }}<br>
+                    {{ form.foto.label }}
+                    {% if item.foto %}
+                        <div>
+                            <img src="{{ url_for('static', filename='images/fotos_camisas/' + item.foto) }}" alt="Imagem Atual" width="150">
+                            <input type="checkbox" name="remove_foto" value="1">
+                            <h1 class="texto1"> Remover foto atual </h1>
+                        </div>
+                    {% endif %}
+                    {{ form.foto }}<br>
+                    {{ form.tamanho.label }} {{ form.tamanho(value=item.tamanho) }}<br>
+                    {{ form.quantidade.label }} {{ form.quantidade(value=item.quantidade) }}<br>
+                    <div class="seletor-cor">
+                        <label for="cor">Cor:</label><br>
+                        <input class="jscolor {onFineChange:'updateColor(this)'}" id="cor-picker" value="{{ item.cor }}">
+                        <input type="hidden" id="cor" name="cor" value="{{ item.cor }}">
+                    </div>
+                    {{ form.cor(value=item.cor) }}<br>            
+                    {{ form.tecido.label }} {{ form.tecido(value=item.tecido) }}<br>
+                    {{ form.texto_camisa.label }} {{ form.texto_camisa(value=item.texto_camisa) }}<br>
+                    {{ form.observacao.label }} {{ form.observacao(value=item.observacao) }}<br>
+                    {{ form.botao_confirmacao(class_="botao") }}
+                     <a href="{{ url_for('carrinho') }}"><button class="botao">VOLTAR AO CARRINHO</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</main>
+<script>
+    function updateColor(picker) {
+        var corSelecionada = picker.toHEXString();
+        document.getElementById("cor").value = corSelecionada;
+    }
+</script>
+{% endblock %}
