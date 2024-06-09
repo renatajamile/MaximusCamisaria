@@ -1,8 +1,9 @@
 # criar as rotas do site (os links)
 import os
+from sqlite3 import IntegrityError
 import uuid
 from datetime import datetime
-from flask import render_template, url_for, redirect, request, flash
+from flask import abort, render_template, url_for, redirect, request, flash
 from loja import app, database, bcrypt, allowed_file
 from loja.models import Usuario, Personalizada
 from flask_login import login_required, login_user, logout_user, current_user

@@ -1,0 +1,41 @@
+{% extends "perfil.html" %}
+{% block main1 %}
+<h2>Editar Dados</h2>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.username.label }} {{ form.username(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.userlastname.label }} {{ form.userlastname(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.email.label }} {{ form.email(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.endereco.label }} {{ form.endereco(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.complemento.label }} {{ form.complemento(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.cidade.label }} {{ form.cidade(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.uf.label }} {{ form.uf(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.cep.label }} {{ form.cep(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.telefone.label }} {{ form.telefone(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.botao_confirmacao(class="btn btn-primary") }}
+    </div>
+</form>
+
+{% endblock %}
+
+{% block main2 %}
+{% endblock %}
