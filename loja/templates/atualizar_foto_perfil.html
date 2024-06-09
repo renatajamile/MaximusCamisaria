@@ -18,14 +18,13 @@
         <br>
         {{ form.foto_perfil(class="form-control") }}
     </div>
-    <div>
-        {{ form.botao_confirmacao(class="botao1") }}
+    <div>{{ form.botao_confirmacao(class="botao1") }}
     </div>
 </form>
 
 <form method="POST" action="{{ url_for('excluir_foto_perfil') }}">
-    {{ form.hidden_tag() }}
-    <button type="submit" class="botao1">EXCLUIR FOTO DO PERFIL</button>
+   {{ form.hidden_tag() }}
+    <button type="submit" class="botao1"><strong>EXCLUIR FOTO </strong></button>
 </form>
 
 </main>

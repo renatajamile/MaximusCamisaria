@@ -27,7 +27,7 @@
         <div class="botoes">
             <a href="{{ url_for('visualizarDados') }}"><button class="botao1"><strong>MEU PERFIL</strong></button></a>
             <a href="{{ url_for('carrinho') }}"><button class="botao1"><strong>MEU CARRINHO</strong></button></a>
-            <a href="#"><button class="botao1"><strong>AVALIAÇÃO</strong></button></a>
+            <a href="{{ url_for('avaliacao') }}"><button class="botao1"><strong>AVALIAÇÃO</strong></button></a>
         </div>
         <div class="logo">
             <img src="{{ url_for('static', filename='images/homepage/camisas.jpg') }}" alt="camisas">

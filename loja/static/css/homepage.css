@@ -125,6 +125,7 @@ header .navbar a:hover{
     color: white;
     border-radius: 20px;
     margin-top: 2rem;
+    font-weight: bold;
 }
 
 .botao1:hover{
@@ -176,6 +177,7 @@ header .navbar a:hover{
   .texto{
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 15px
   }
   
