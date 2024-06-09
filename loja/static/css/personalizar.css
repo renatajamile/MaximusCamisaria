@@ -88,15 +88,15 @@
 .personalizar .botao {
     background-color: var(--azulclaro); /* Azul claro */
     height: 5rem;
-    width: 80%;
+    width: 70%;
     border: none;
     font-family: 'Quicksand', sans-serif;
     font-size: 15px;
     font-weight: bold; /* Adiciona peso à fonte */
     color: white;
-    border-radius: 20px;
+    border-radius: 30px;
     margin-top: 0.5rem;
-    margin-left: 80px;
+    margin-left: 100px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
     transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave */

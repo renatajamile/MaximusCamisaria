@@ -85,7 +85,10 @@
         <a href="{{ url_for('minhaconta') }}"><button class="botao1" type="button"><strong>VOLTAR</strong></button></a>
     </div>
 {% else %}
-    <p>Seu carrinho está vazio!</p>
+    <h1 class="texto">Seu carrinho está vazio!</h1>
+    <div class="voltar">
+        <a href="{{ url_for('minhaconta') }}"><button class="botao1" type="button"><strong>VOLTAR</strong></button></a>
+    </div>
 {% endif %}
 
 </main>

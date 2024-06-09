@@ -157,10 +157,24 @@ def personalizar():
 def produtos():
     return render_template ("produtos.html")
 
+# ROTA FALE
 @app.route("/fale")
 @login_required
 def fale():
     return render_template("fale.html", usuario=current_user)
+
+@app.route("/enviar_mensagem", methods=["POST"])
+def enviar_mensagem():
+    assunto = request.form["assunto"]
+    mensagem = request.form["mensagem"]
+    return render_template("fale.html", mensagem_sucesso="Mensagem enviada com sucesso!", usuario=current_user)
+
+
+# ROTA Avaliação
+@app.route("/avaliacao")
+@login_required
+def avaliacao():
+    return render_template("avaliacao.html", usuario=current_user)
 
 # ROTA DA MINHA CONTA
 @app.route("/minhaconta")
