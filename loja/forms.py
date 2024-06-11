@@ -47,7 +47,7 @@ class FormPersonalizada(FlaskForm):
     quantidade = IntegerField('Quantidade', validators=[DataRequired()])
     tecido = SelectField('Tecido', choices=tecidos, validators=[DataRequired()])
     cor = HiddenField('Cor')
-    texto_camisa = StringField('Texto na Camisa', validators=[DataRequired()])
+    texto_camisa = StringField('Texto na Camisa')
     observacao = TextAreaField('Observações')
     botao_confirmacao = SubmitField('ENVIAR')
     

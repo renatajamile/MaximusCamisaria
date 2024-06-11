@@ -1,0 +1,36 @@
+/* mensagem.css */
+
+.texto{
+    margin-top: 5rem;
+}
+.username {
+    color: #0098db;
+}
+
+.imagemMensagem {
+    height: 10rem;
+    margin-bottom: 3rem;
+}
+
+.mensagem {
+    text-align: center;
+    margin: 4rem;
+}
+
+.ava {
+    color: #0098db;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .mensagem  {
+    margin-top: 1rem; 
+}

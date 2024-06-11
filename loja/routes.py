@@ -158,10 +158,38 @@ def personalizar():
 def produtos():
     return render_template ("produtos.html")
 
+# ROTA FALE
 @app.route("/fale")
 @login_required
 def fale():
     return render_template("fale.html", usuario=current_user)
+
+
+
+
+# ROTA Avaliação
+@app.route("/avaliacao")
+@login_required
+def avaliacao():
+    return render_template("avaliacao.html", usuario=current_user)
+
+
+@app.route('/avaliacao_concluida')
+def avaliacao_concluida():
+    avaliacao_sucesso = "Obrigado(a) por compartilhar sua opinião!"
+    return render_template('mensagem.html', titulo="Avaliação enviada com sucesso!", mensagem=avaliacao_sucesso)
+
+@app.route('/enviar_mensagem', methods=['POST'])
+def enviar_mensagem():
+    # Lógica para enviar a mensagem
+    mensagem_sucesso = "Sua mensagem foi enviada com sucesso!"
+    return render_template('mensagem.html', titulo="Mensagem Enviada", mensagem=mensagem_sucesso)
+
+
+@app.route('/solicitar_orcamento')
+def solicitar_orcamento():
+    orcamento_solicitado = "Agradecemos pela sua preferência, seu pedido está em análise!<br>Entraremos em contato com você em breve para fornecer mais informações sobre o seu pedido."
+    return render_template('mensagem.html', titulo="Solicitação enviada com sucesso!", mensagem=orcamento_solicitado)
 
 # ROTA DA MINHA CONTA
 @app.route("/minhaconta")

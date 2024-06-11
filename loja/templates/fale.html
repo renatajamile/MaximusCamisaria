@@ -2,20 +2,40 @@
 
 {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/personalizar.css') }}">
 {% endblock %}
 <body>
 
 {% block main1 %}
 <main> 
-    <h1>Fale Conosco</h1>
-    <p>Olá, <strong>{{current_user.username}}</strong>! Como podemos ajudar você?</p>
+    <h1 class="subtitulo">Fale Conosco</h1>
+    <h1 class="texto">Olá, <strong>{{current_user.username}}</strong>! Como podemos ajudar você?</h1>
 
 {% endblock %}
 
 {% block main2 %}
-    <h1>Aqui ficará o formulario de fale conosco</h1>
+<div class="formulario">
+<form action="{{ url_for('enviar_mensagem') }}" method="POST">
+    <label class="texto" for="assunto" style="line-height: 2.5;"><strong>Assunto:</strong></label>
+    <select id="assunto" name="assunto">
+        <option value="sugestao">Sugestão</option>
+        <option value="duvida">Dúvida</option>
+        <option value="reclamacao">Reclamação</option>
+        <option value="outros">Outros</option>
+    </select>
+
+
+
+    <label class="texto" for="selecao" style="line-height: 2.5;"><strong>Sua mensagem:</strong> </label>
+    <textarea id="mensagem" name="mensagem" rows="10" required></textarea>
+
+    <br>
+
+    <button type="submit" class="botao1"><strong> ENVIAR </strong></button>
+</form><br>
+
     </main>
-    
+</div>  
 {% endblock %}
     
     </body>

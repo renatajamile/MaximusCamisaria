@@ -125,6 +125,7 @@ header .navbar a:hover{
     color: white;
     border-radius: 20px;
     margin-top: 2rem;
+    font-weight: bold;
 }
 
 .botao1:hover{
@@ -176,6 +177,7 @@ header .navbar a:hover{
   .texto{
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 15px
   }
   
@@ -531,22 +533,46 @@ header .navbar a:hover{
 
 /* Estilo Pagina minha conta*/
     
-    .botoes-e-logo {
-        display: grid;
-        grid-template-columns: auto auto; /* Duas colunas, uma para a logo e outra para os botões */
-        grid-gap: 20px; /* Espaçamento entre os elementos */
-        align-items: center; /* Centraliza verticalmente */
-    }
-    
-    .botoes {
-        display: flex;
-        flex-direction: column; /* Botões empilhados verticalmente */
-    }
-    
-    .logo img {
-        width:150px; /* Tamanho da imagem da logo */
-    }
+.container {
+    display: flex;
+    justify-content: space-between; /* Coloca os elementos em cada extremidade */
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 22rem;
+}
 
+.main1 {
+    flex: 1; /* Ocupa todo o espaço disponível */
+    margin-right: 20px; /* Adiciona espaçamento entre as seções */
+}
+
+.main2 {
+    flex: 1; /* Ocupa todo o espaço disponível */
+}
+
+.fotoperfil {
+    width: 200px;
+}
+
+.fotoperfil img {
+    width: 150px; /* Ajuste a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+
+.botoes-e-logo {
+    display: flex;
+    align-items: center;
+    gap: 30rem;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo img {
+    width: 150px; /* Define o tamanho da imagem */
+}
 /* EDITAR_USUARIO Estilos para o container DO EDITAR USUARIO  */
  .editar-subtitulo-base {
         margin-top: 20px; /* Reduz o espaçamento superior */

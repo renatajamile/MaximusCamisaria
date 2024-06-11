@@ -1,0 +1,118 @@
+@import url('https://fonts.goss2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Quicksand', sans-serif;
+}
+
+:root {
+	--amarelo: #ffbd13;
+	--cinza: #F5F5F5;
+	--vermelho: #da190b;
+	--branco: #f6f6f6;
+	--azulclaro: #0098db;
+	--verde: #277410;
+	--azulescuro: #041521;
+	--azulbotao: #00008B;
+	--logoescura: #211f20;
+	--shadow: 8px 8px 30px rgba(0,0,0, .05);
+
+}
+
+.main {
+	text-align: center;
+	margin: 3rem;
+}
+
+.wrapper {
+	background:#FFF;
+	padding: 2rem;
+	max-width: 576px;
+	width: 100%;
+	border-radius: .75rem;
+	box-shadow: var(--shadow);
+	margin: 0 auto;
+	margin-bottom: 7rem;
+}
+
+.wrapper h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+.rating {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: .5rem;
+	font-size: 2rem;
+	color: var(--amarelo);
+	margin-bottom: 2rem;
+}
+.rating .star {
+	cursor: pointer;
+}
+.rating .star.active {
+	opacity: 0;
+	animation: animate .5s calc(var(--i) * .1s) ease-in-out forwards;
+}
+
+@keyframes animate {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.rating .star:hover {
+	transform: scale(1.1);
+}
+textarea {
+	width: 100%;
+	background: var(--cinza);
+	padding: 1rem;
+	border-radius: .5rem;
+	border: none;
+	outline: none;
+	resize: none;
+	margin-bottom: .5rem;
+}
+.btn-group {
+	display: flex;
+	grid-gap: .5rem;
+	align-items: center;
+}
+.btn-group .btn {
+	padding: .75rem 1rem;
+	border-radius: 20px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: 500;
+}
+.btn-group .btn.submit {
+	background: var(--azulclaro);
+	color: var(--branco);
+}
+.btn-group .btn.submit:hover {
+	background: var(--verde);
+}
+.btn-group .btn.cancel {
+	background: var(--azulclaro);
+	color: var(--branco);
+}
+.btn-group .btn.cancel:hover {
+	color:var(--branco);
+	background: var(--vermelho);
+}

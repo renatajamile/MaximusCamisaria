@@ -1,0 +1,73 @@
+{% extends "homepage.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/avaliacao.css') }}">
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+{% endblock %}
+
+{% block main1 %}
+<div class="main">
+    <h1 style="color: #0098db;">Avaliação!</h1><br><br>
+    <h1>Olá, <strong>{{current_user.username}}! Como foi a sua experiência?</strong></h1>
+</div>
+{% endblock %}
+
+{% block main2 %}
+<div class="wrapper">
+    <h1 style="text-align: center;">Faça sua avaliação aqui.</h1>
+    <form id="avaliacaoForm">
+        <div class="rating">
+            <input type="number" name="rating" hidden>
+            <i class='bx bx-star star' style="--i: 0;"></i>
+            <i class='bx bx-star star' style="--i: 1;"></i>
+            <i class='bx bx-star star' style="--i: 2;"></i>
+            <i class='bx bx-star star' style="--i: 3;"></i>
+            <i class='bx bx-star star' style="--i: 4;"></i>
+        </div>
+        <textarea name="opinion" cols="30" rows="5" placeholder="Sua opinião..."></textarea>
+        <div class="btn-group">
+            <button type="button" class="btn submit" onclick="submitAvaliacaoForm()"><strong>ENVIAR</strong></button>
+            <button type="button" class="btn cancel"><strong>CANCELAR</strong></button>
+        </div>
+    </form>
+</div>
+
+{% if mensagem %}
+<div class="mensagem-container">
+    <h1>{{ titulo }}</h1>
+    <p>{{ mensagem }}</p>
+</div>
+{% endif %}
+
+<script>
+const allStar = document.querySelectorAll('.rating .star')
+const ratingValue = document.querySelector('.rating input')
+
+allStar.forEach((item, idx) => {
+    item.addEventListener('click', function () {
+        let click = 0
+        ratingValue.value = idx + 1
+
+        allStar.forEach(i => {
+            i.classList.replace('bxs-star', 'bx-star')
+            i.classList.remove('active')
+        })
+        for (let i = 0; i < allStar.length; i++) {
+            if (i <= idx) {
+                allStar[i].classList.replace('bx-star', 'bxs-star')
+                allStar[i].classList.add('active')
+            } else {
+                allStar[i].style.setProperty('--i', click)
+                click++
+            }
+        }
+    })
+})
+
+function submitAvaliacaoForm() {
+    // Simular o envio do formulário
+    window.location.href = "{{ url_for('avaliacao_concluida') }}";
+}
+</script>
+{% endblock %}
