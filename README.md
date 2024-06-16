@@ -18,7 +18,7 @@ Desenvolvimento de um site que permita a divulgação da marca para outras regi�
 
 Este projeto foi desenvolvido utilizando o framework Flask, executado no Visual Studio Code (VS Code). As linguagens de programação utilizadas incluem Python para a lógica de backend, HTML para a estrutura das páginas web, CSS para a estilização e JavaScript para funcionalidades dinâmicas no frontend.
 
-### Pré-requisitos
+## Pré-requisitos
 
 Certifique-se de ter o Python e o Virtualenv instalados em sua máquina. Você também precisará do Visual Studio Code como seu ambiente de desenvolvimento integrado (IDE).
 
