@@ -4,7 +4,7 @@
 
 ## Sobre o Projeto
 
-Breve descrição do projeto.
+Desenvolvimento de um site que permita a divulgação da marca para outras regiões do país e contribuindo para a ampliação dos negócios da empresa.
 
 ## Integrantes
 
