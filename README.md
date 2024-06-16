@@ -14,6 +14,13 @@ Desenvolvimento de um site que permita a divulgação da marca para outras regi�
 - RENATA AROUCA SANTOS - renata.santos.valenca@uniatenas.edu.br
 - RENATA JAMILE RODRIGUES DE OLIVEIRA - renata.oliveira@uniatenas.edu.br
 
+## Vídeo Demonstrativo
+
+<video width="600" controls>
+  <source src="./website.mp4" type="video/mp4">
+  Seu navegador não suporta a tag de vídeo.
+</video>
+
 ## Como Usar
 
 Este projeto foi desenvolvido utilizando o framework Flask, executado no Visual Studio Code (VS Code). As linguagens de programação utilizadas incluem Python para a lógica de backend, HTML para a estrutura das páginas web, CSS para a estilização e JavaScript para funcionalidades dinâmicas no frontend.
