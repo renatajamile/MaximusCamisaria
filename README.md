@@ -67,9 +67,13 @@ Certifique-se de ter o Python e o Virtualenv instalados em sua máquina. Você t
 
 ## Estrutura do Projeto
 app.py: Arquivo principal para inicialização da aplicação Flask.
+
 /templates: Contém os arquivos HTML renderizados pelo Flask.
+
 /static: Contém os arquivos estáticos como CSS, JavaScript e imagens.
+
 /models: Definições dos modelos de dados.
+
 /routes: Definição das rotas da aplicação.
 
 ## Funcionalidades Principais
