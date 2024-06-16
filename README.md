@@ -34,34 +34,36 @@ Certifique-se de ter o Python e o Virtualenv instalados em sua máquina. Você t
 
 2. **Crie e Ative um Ambiente Virtual**
 
-Navegue até o diretório do projeto e crie um ambiente virtual:
+      Navegue até o diretório do projeto e crie um ambiente virtual:
 
-cd MaximusCamisaria
-python -m venv venv
+      cd MaximusCamisaria
+      python -m venv venv
 
-Ative o ambiente virtual:
-No Windows: venv\Scripts\activate
-No macOS/Linux: source venv/bin/activate
+      **Ative o ambiente virtual:**
+
+      No Windows: venv\Scripts\activate
+
+      No macOS/Linux: source venv/bin/activate
 
 3. **Instale as Dependências**
 
-Instale as dependências do projeto listadas no arquivo requirements.txt: 
+      Instale as dependências do projeto listadas no arquivo requirements.txt: 
 
-pip install -r requirements.txt
+      pip install -r requirements.txt
 
 4. **Configuração do Banco de Dados**
 
-Configure o banco de dados conforme necessário. Execute as migrações para criar as tabelas no banco de dados:
+      Configure o banco de dados conforme necessário. Execute as migrações para criar as tabelas no banco de dados:
 
-flask db upgrade
+      flask db upgrade
 
 5. **Execute a Aplicação**
 
-Com todas as dependências instaladas e o banco de dados configurado, você pode executar a aplicação Flask:
+      Com todas as dependências instaladas e o banco de dados configurado, você pode executar a aplicação Flask:
 
-flask run
+      flask run
 
-A aplicação estará disponível em http://127.0.0.1:5000/
+      A aplicação estará disponível em http://127.0.0.1:5000/
 
 ### Estrutura do Projeto
 app.py: Arquivo principal para inicialização da aplicação Flask.
@@ -72,22 +74,37 @@ app.py: Arquivo principal para inicialização da aplicação Flask.
 
 ### Funcionalidades Principais
 Sistema de Login/Registro: Autenticação de usuários.
+
 Catálogo de Produtos: Exibição de produtos disponíveis.
+
 Personalização de Camisetas: Incluir Pedidos de Camisetas para orçamento.
+
 Fale Conosco: Canal de comunicação com a empresa.
+
 Minha Conta: Espaço do cliente para visualização/alteração de dados do perfil do usuário.
+
 Carrinho de Compras: Adicionar e remover itens do carrinho. 
+
 Avaliação: Envio de avaliação e experiência do usuário.
+
 Envio de orçamentos: (Em construção).
+
 Finalização de Compra: Processo de checkout e confirmação de pedido.(Em construção).
+
 Ambiente Admin.: (Em construção).
 
 ### Tecnologias Utilizadas
 Flask: Framework web usado para o desenvolvimento do backend.
+
 Python: Linguagem de programação principal para a lógica do servidor.
+
 HTML/CSS: Para estruturação e estilização das páginas web.
+
 JavaScript: Para funcionalidades interativas e dinâmicas no frontend.
+
 SQLite: Banco de dados utilizado para armazenar informações.
+
+## Conclusão
 
 Seguindo esses passos, você estará pronto para utilizar e explorar todas as funcionalidades do projeto MaximusCamisaria. 
 
