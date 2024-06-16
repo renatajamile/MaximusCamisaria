@@ -22,7 +22,7 @@ Este projeto foi desenvolvido utilizando o framework Flask, executado no Visual 
 
 Certifique-se de ter o Python e o Virtualenv instalados em sua máquina. Você também precisará do Visual Studio Code como seu ambiente de desenvolvimento integrado (IDE).
 
-### Passo a Passo para Configuração e Execução
+## Passo a Passo para Configuração e Execução
 
 1. **Clone o Repositório**
 
@@ -65,14 +65,14 @@ Certifique-se de ter o Python e o Virtualenv instalados em sua máquina. Você t
 
       A aplicação estará disponível em http://127.0.0.1:5000/
 
-### Estrutura do Projeto
+## Estrutura do Projeto
 app.py: Arquivo principal para inicialização da aplicação Flask.
 /templates: Contém os arquivos HTML renderizados pelo Flask.
 /static: Contém os arquivos estáticos como CSS, JavaScript e imagens.
 /models: Definições dos modelos de dados.
 /routes: Definição das rotas da aplicação.
 
-### Funcionalidades Principais
+## Funcionalidades Principais
 Sistema de Login/Registro: Autenticação de usuários.
 
 Catálogo de Produtos: Exibição de produtos disponíveis.
@@ -93,7 +93,7 @@ Finalização de Compra: Processo de checkout e confirmação de pedido.(Em cons
 
 Ambiente Admin.: (Em construção).
 
-### Tecnologias Utilizadas
+## Tecnologias Utilizadas
 Flask: Framework web usado para o desenvolvimento do backend.
 
 Python: Linguagem de programação principal para a lógica do servidor.
